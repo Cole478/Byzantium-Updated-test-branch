@@ -1,4 +1,4 @@
-﻿capital = 341
+﻿capital = 797
 
 if = {
 	limit = { has_dlc = "Waking the Tiger" }
