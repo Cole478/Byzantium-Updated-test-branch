@@ -1,0 +1,491 @@
+﻿# BYZANTINE NEWS
+
+add_namespace = byzfoot
+
+# Byzantine Football Championship 36
+news_event = {
+	id = byzfoot.1
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1936.6.1
+		date < 1936.9.1
+		NOT = { has_global_flag = byz_foot_36 }
+		country_exists = GRE
+		GRE = { has_war = no }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	immediate = {
+		random_list = {
+			20 = { GRE = { news_event = { id = byzfoot.2 } } }
+			15 = { GRE = { news_event = { id = byzfoot.3 } } }
+			15 = { GRE = { news_event = { id = byzfoot.4 } } }
+			15 = { GRE = { news_event = { id = byzfoot.5 } } }
+			15 = { GRE = { news_event = { id = byzfoot.6 } } }
+			10 = { GRE = { news_event = { id = byzfoot.7 } } }
+			10 = { GRE = { news_event = { id = byzfoot.8 } } }
+		}
+		set_global_flag = byz_foot_36
+	}
+	
+	option = {
+		name = byzfoot.36.a
+	}
+}
+# Olympiacos
+news_event = {
+	id = byzfoot.2
+	title = byzfoot.2.t
+	desc = byzfoot.2.d
+	picture = GFX_news_event_bfb01
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byzfoot.2.a
+	}
+}
+# Panathinaikos
+news_event = {
+	id = byzfoot.3
+	title = byzfoot.3.t
+	desc = byzfoot.3.d
+	picture = GFX_news_event_bfb02
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byzfoot.3.a
+	}
+}
+# Alexandros
+news_event = {
+	id = byzfoot.4
+	title = byzfoot.4.t
+	desc = byzfoot.4.d
+	picture = GFX_news_event_bfb03
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byzfoot.4.a
+	}
+}
+# Hermes
+news_event = {
+	id = byzfoot.5
+	title = byzfoot.5.t
+	desc = byzfoot.5.d
+	picture = GFX_news_event_bfb04
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzfoot.5.a
+	}
+}
+# Apollon
+news_event = {
+	id = byzfoot.6
+	title = byzfoot.6.t
+	desc = byzfoot.6.d
+	picture = GFX_news_event_bfb05
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byzfoot.6.a
+	}
+}
+# Panionios
+news_event = {
+	id = byzfoot.7
+	title = byzfoot.7.t
+	desc = byzfoot.7.d
+	picture = GFX_news_event_bfb06
+		
+	is_triggered_only = yes
+	
+	option = {
+		name = byzfoot.7.a
+	}
+}
+# Iraklis
+news_event = {
+	id = byzfoot.8
+	title = byzfoot.8.t
+	desc = byzfoot.8.d
+	picture = GFX_news_event_bfb07
+		
+	is_triggered_only = yes
+	
+	option = {
+		name = byzfoot.8.a
+	}
+}
+# Byzantine Football Championship 37
+news_event = {
+	id = byzfoot.9
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1937.6.1
+		date < 1937.9.1
+		NOT = { has_global_flag = byz_foot_37 }
+		country_exists = GRE
+		GRE = { has_war = no }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	immediate = {
+		random_list = {
+			20 = { GRE = { news_event = { id = byzfoot.2 } } }
+			15 = { GRE = { news_event = { id = byzfoot.3 } } }
+			15 = { GRE = { news_event = { id = byzfoot.4 } } }
+			15 = { GRE = { news_event = { id = byzfoot.5 } } }
+			15 = { GRE = { news_event = { id = byzfoot.6 } } }
+			10 = { GRE = { news_event = { id = byzfoot.7 } } }
+			10 = { GRE = { news_event = { id = byzfoot.8 } } }
+		}
+		set_global_flag = byz_foot_37
+	}
+	
+	option = {
+		name = byzfoot.37.a
+	}
+}
+# Byzantine Football Championship 38
+news_event = {
+	id = byzfoot.10
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1938.6.1
+		date < 1938.9.1
+		NOT = { has_global_flag = byz_foot_38 }
+		country_exists = GRE
+		GRE = { has_war = no }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	immediate = {
+		random_list = {
+			20 = { GRE = { news_event = { id = byzfoot.2 } } }
+			15 = { GRE = { news_event = { id = byzfoot.3 } } }
+			15 = { GRE = { news_event = { id = byzfoot.4 } } }
+			15 = { GRE = { news_event = { id = byzfoot.5 } } }
+			15 = { GRE = { news_event = { id = byzfoot.6 } } }
+			10 = { GRE = { news_event = { id = byzfoot.7 } } }
+			10 = { GRE = { news_event = { id = byzfoot.8 } } }
+		}
+		set_global_flag = byz_foot_38
+	}
+	
+	option = {
+		name = byzfoot.38.a
+	}
+}
+# Byzantine Football Championship 39
+news_event = {
+	id = byzfoot.11
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1939.6.1
+		date < 1939.9.1
+		NOT = { has_global_flag = byz_foot_39 }
+		country_exists = GRE
+		GRE = { has_war = no }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	immediate = {
+		random_list = {
+			20 = { GRE = { news_event = { id = byzfoot.2 } } }
+			15 = { GRE = { news_event = { id = byzfoot.3 } } }
+			15 = { GRE = { news_event = { id = byzfoot.4 } } }
+			15 = { GRE = { news_event = { id = byzfoot.5 } } }
+			15 = { GRE = { news_event = { id = byzfoot.6 } } }
+			10 = { GRE = { news_event = { id = byzfoot.7 } } }
+			10 = { GRE = { news_event = { id = byzfoot.8 } } }
+		}
+		set_global_flag = byz_foot_39
+	}
+	
+	option = {
+		name = byzfoot.39.a
+	}
+}
+# Byzantine Football Championship 40
+news_event = {
+	id = byzfoot.12
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1940.6.1
+		date < 1940.9.1
+		NOT = { has_global_flag = byz_foot_40 }
+		country_exists = GRE
+		GRE = { has_war = no }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	immediate = {
+		random_list = {
+			20 = { GRE = { news_event = { id = byzfoot.2 } } }
+			15 = { GRE = { news_event = { id = byzfoot.3 } } }
+			15 = { GRE = { news_event = { id = byzfoot.4 } } }
+			15 = { GRE = { news_event = { id = byzfoot.5 } } }
+			15 = { GRE = { news_event = { id = byzfoot.6 } } }
+			10 = { GRE = { news_event = { id = byzfoot.7 } } }
+			10 = { GRE = { news_event = { id = byzfoot.8 } } }
+		}
+		set_global_flag = byz_foot_40
+	}
+	
+	option = {
+		name = byzfoot.40.a
+	}
+}
+# Byzantine Football Championship 41
+news_event = {
+	id = byzfoot.13
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1941.6.1
+		date < 1941.9.1
+		NOT = { has_global_flag = byz_foot_41 }
+		country_exists = GRE
+		GRE = { has_war = no }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	immediate = {
+		random_list = {
+			20 = { GRE = { news_event = { id = byzfoot.2 } } }
+			15 = { GRE = { news_event = { id = byzfoot.3 } } }
+			15 = { GRE = { news_event = { id = byzfoot.4 } } }
+			15 = { GRE = { news_event = { id = byzfoot.5 } } }
+			15 = { GRE = { news_event = { id = byzfoot.6 } } }
+			10 = { GRE = { news_event = { id = byzfoot.7 } } }
+			10 = { GRE = { news_event = { id = byzfoot.8 } } }
+		}
+		set_global_flag = byz_foot_41
+	}
+	
+	option = {
+		name = byzfoot.41.a
+	}
+}
+# Byzantine Football Championship 42
+news_event = {
+	id = byzfoot.14
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1942.6.1
+		date < 1942.9.1
+		NOT = { has_global_flag = byz_foot_42 }
+		country_exists = GRE
+		GRE = { has_war = no }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	immediate = {
+		random_list = {
+			20 = { GRE = { news_event = { id = byzfoot.2 } } }
+			15 = { GRE = { news_event = { id = byzfoot.3 } } }
+			15 = { GRE = { news_event = { id = byzfoot.4 } } }
+			15 = { GRE = { news_event = { id = byzfoot.5 } } }
+			15 = { GRE = { news_event = { id = byzfoot.6 } } }
+			10 = { GRE = { news_event = { id = byzfoot.7 } } }
+			10 = { GRE = { news_event = { id = byzfoot.8 } } }
+		}
+		set_global_flag = byz_foot_42
+	}
+	
+	option = {
+		name = byzfoot.42.a
+	}
+}
+# Byzantine Football Championship 43
+news_event = {
+	id = byzfoot.15
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1943.6.1
+		date < 1943.9.1
+		NOT = { has_global_flag = byz_foot_43 }
+		country_exists = GRE
+		GRE = { has_war = no }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	immediate = {
+		random_list = {
+			20 = { GRE = { news_event = { id = byzfoot.2 } } }
+			15 = { GRE = { news_event = { id = byzfoot.3 } } }
+			15 = { GRE = { news_event = { id = byzfoot.4 } } }
+			15 = { GRE = { news_event = { id = byzfoot.5 } } }
+			15 = { GRE = { news_event = { id = byzfoot.6 } } }
+			10 = { GRE = { news_event = { id = byzfoot.7 } } }
+			10 = { GRE = { news_event = { id = byzfoot.8 } } }
+		}
+		set_global_flag = byz_foot_43
+	}
+	
+	option = {
+		name = byzfoot.43.a
+	}
+}
+# Byzantine Football Championship 44
+news_event = {
+	id = byzfoot.16
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1944.6.1
+		date < 1944.9.1
+		NOT = { has_global_flag = byz_foot_44 }
+		country_exists = GRE
+		GRE = { has_war = no }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	immediate = {
+		random_list = {
+			20 = { GRE = { news_event = { id = byzfoot.2 } } }
+			15 = { GRE = { news_event = { id = byzfoot.3 } } }
+			15 = { GRE = { news_event = { id = byzfoot.4 } } }
+			15 = { GRE = { news_event = { id = byzfoot.5 } } }
+			15 = { GRE = { news_event = { id = byzfoot.6 } } }
+			10 = { GRE = { news_event = { id = byzfoot.7 } } }
+			10 = { GRE = { news_event = { id = byzfoot.8 } } }
+		}
+		set_global_flag = byz_foot_44
+	}
+	
+	option = {
+		name = byzfoot.44.a
+	}
+}
+# Byzantine Football Championship 45
+news_event = {
+	id = byzfoot.17
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1945.6.1
+		date < 1945.9.1
+		NOT = { has_global_flag = byz_foot_45 }
+		country_exists = GRE
+		GRE = { has_war = no }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	immediate = {
+		random_list = {
+			20 = { GRE = { news_event = { id = byzfoot.2 } } }
+			15 = { GRE = { news_event = { id = byzfoot.3 } } }
+			15 = { GRE = { news_event = { id = byzfoot.4 } } }
+			15 = { GRE = { news_event = { id = byzfoot.5 } } }
+			15 = { GRE = { news_event = { id = byzfoot.6 } } }
+			10 = { GRE = { news_event = { id = byzfoot.7 } } }
+			10 = { GRE = { news_event = { id = byzfoot.8 } } }
+		}
+		set_global_flag = byz_foot_45
+	}
+	
+	option = {
+		name = byzfoot.45.a
+	}
+}
+# Byzantine Football Championship 46
+news_event = {
+	id = byzfoot.18
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 1946.6.1
+		date < 1946.9.1
+		NOT = { has_global_flag = byz_foot_46 }
+		country_exists = GRE
+		GRE = { has_war = no }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	immediate = {
+		random_list = {
+			20 = { GRE = { news_event = { id = byzfoot.2 } } }
+			15 = { GRE = { news_event = { id = byzfoot.3 } } }
+			15 = { GRE = { news_event = { id = byzfoot.4 } } }
+			15 = { GRE = { news_event = { id = byzfoot.5 } } }
+			15 = { GRE = { news_event = { id = byzfoot.6 } } }
+			10 = { GRE = { news_event = { id = byzfoot.7 } } }
+			10 = { GRE = { news_event = { id = byzfoot.8 } } }
+		}
+		set_global_flag = byz_foot_46
+	}
+	
+	option = {
+		name = byzfoot.46.a
+	}
+}

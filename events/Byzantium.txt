@@ -1,0 +1,4064 @@
+﻿### BYZANTINE EVENTS
+
+add_namespace = byzantium
+
+### RECLAIMING THRACIA - BULGARIA
+
+country_event = { 
+	id = byzantium.1
+	title = byzantium.1.t
+	desc = byzantium.1.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.1.a # Claim
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 48
+						owns_state = 211
+						owns_state = 212
+						owns_state = 801
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = BUL
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 48
+					owns_state = 211
+					owns_state = 212
+					owns_state = 801
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = GRE
+							is_in_faction_with = GRE
+							is_puppet_of = GRE
+						}
+					}
+				}
+			}
+			country_event = { id = byzantium.2 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.1.b # Decline
+		ai_chance = {
+			factor = 10
+		}
+		news_event = { id = byznews.1 days = 1 }
+	}
+}
+
+country_event = { # Target
+	id = byzantium.2
+	title = byzantium.2.t
+	desc = byzantium.2.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Target Refuses
+		name = byzantium.2.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			211 = { add_core_of = GRE }
+			212 = { add_core_of = GRE }
+			48 = { add_core_of = GRE }
+			801 = { add_core_of = GRE }
+			GRE = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.3 days = 1 }
+			}
+		}
+	}
+	option = { # Target Accepts
+		name = byzantium.2.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = GRE
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		GRE = { transfer_state = 211 }
+		GRE = { transfer_state = 212 }
+		GRE = { transfer_state = 48 }
+		GRE = { transfer_state = 801 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = BUL
+					}
+				}
+			}
+			set_global_flag = byz_bul_annex
+		}
+		news_event = { id = byznews.2 days = 1 }
+	}
+}
+
+country_event = {
+	id = byzantium.3
+	title = byzantium.3.t
+	desc = byzantium.3.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.3.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 211 212 48 801 }
+		}
+	}
+}
+
+### RECLAIMING MACEDONIA - SOUTHERN YUGOSLAVIA
+
+country_event = {
+	id = byzantium.4
+	title = byzantium.4.t
+	desc = byzantium.4.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.1.a # Claim
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 105
+						owns_state = 106
+						owns_state = 108
+						owns_state = 802
+						owns_state = 803
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = YUG
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 105
+					owns_state = 106
+					owns_state = 108
+					owns_state = 802
+					owns_state = 803
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = GRE
+							is_in_faction_with = GRE
+							is_puppet_of = GRE
+						}
+					}
+				}
+			}
+			country_event = { id = byzantium.5 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.1.b # Decline
+		ai_chance = { factor = 10 }
+		news_event = { id = byznews.1 days = 1 }
+	}
+}
+
+country_event = { # Target
+	id = byzantium.5
+	title = byzantium.5.t
+	desc = byzantium.5.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Target Refuses
+		name = byzantium.2.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			105 = { add_core_of = GRE }
+			106 = { add_core_of = GRE }
+			108 = { add_core_of = GRE }
+			802 = { add_core_of = GRE }
+			803 = { add_core_of = GRE }
+			GRE = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.6 days = 1 }
+			}
+		}
+	}
+	option = { # Target Accepts
+		name = byzantium.2.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = GRE
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		GRE = { transfer_state = 105 }
+		GRE = { transfer_state = 106 }
+		GRE = { transfer_state = 108 }
+		GRE = { transfer_state = 802 }
+		GRE = { transfer_state = 803 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.2 days = 1 }
+	}
+}
+
+country_event = {
+	id = byzantium.6
+	title = byzantium.6.t
+	desc = byzantium.6.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.3.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 106 108 105 802 803 }
+		}
+	}
+}
+
+### RECLAIMING MOESIA - SOUTHEASTERN ROMANIA
+
+country_event = {
+	id = byzantium.7
+	title = byzantium.7.t
+	desc = byzantium.7.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.1.a # Claim
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 77
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = ROM
+				}
+			}
+		}
+		every_country {
+			limit = {
+				owns_state = 77
+				NOT = { tag = GRE }
+			}
+			country_event = { id = byzantium.8 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.1.b # Decline
+		ai_chance = { factor = 10 }
+		news_event = { id = byznews.1 days = 1 }
+	}
+}
+
+country_event = {
+	id = byzantium.8
+	title = byzantium.8.t
+	desc = byzantium.8.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Target Refuses
+		name = byzantium.2.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			77 = { add_core_of = GRE }
+			GRE = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.9 days = 1 }
+			}
+		}
+	}
+	option = { # Target Accepts
+		name = byzantium.2.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = GRE
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		GRE = { transfer_state = 77 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.2 days = 1 }
+	}
+}
+
+country_event = {
+	id = byzantium.9
+	title = byzantium.9.t
+	desc = byzantium.9.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.3.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 77 }
+		}
+	}
+}
+
+### RECLAIMING ILLYRIA - ALBANIA
+
+country_event = {
+	id = byzantium.10
+	title = byzantium.10.t
+	desc = byzantium.10.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.1.a # Claim
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 44
+						owns_state = 805
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = ALB
+				}
+			}
+		}
+		every_country {
+			limit = {
+				owns_state = 44
+				owns_state = 805
+				NOT = { tag = GRE }
+			}
+			country_event = { id = byzantium.11 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.1.b # Peace
+		ai_chance = { factor = 10 }
+		news_event = { id = byznews.1 days = 1 }
+	}
+}
+
+country_event = {
+	id = byzantium.11
+	title = byzantium.11.t
+	desc = byzantium.11.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Target Refuses
+		name = byzantium.2.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			44 = { add_core_of = GRE }
+			805 = { add_core_of = GRE }
+			GRE = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.12 days = 1 }
+			}
+		}
+	}
+	option = { # Target Accepts
+		name = byzantium.2.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = GRE
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		GRE = { transfer_state = 44 }
+		GRE = { transfer_state = 805 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ALB
+					}
+				}
+			}
+			set_global_flag = byz_alb_annex
+		}
+		news_event = { id = byznews.2 days = 1 }
+	}
+}
+
+country_event = {
+	id = byzantium.12
+	title = byzantium.12.t
+	desc = byzantium.12.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.3.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 44 805 }
+		}
+	}
+}
+
+### RECLAIMING ANATOLIA - COASTAL TURKEY
+
+country_event = {
+	id = byzantium.13
+	title = byzantium.13.t
+	desc = byzantium.13.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.1.a # Claim
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 342
+						owns_state = 345
+						owns_state = 356
+						owns_state = 355
+						owns_state = 354
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = TUR
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 342
+					owns_state = 345
+					owns_state = 356
+					owns_state = 355
+					owns_state = 354
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = GRE
+							is_in_faction_with = GRE
+							is_puppet_of = GRE
+						}
+					}
+				}
+			}
+			country_event = { id = byzantium.14 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.1.b # Peace
+		ai_chance = { factor = 10 }
+		news_event = { id = byznews.1 days = 1 }
+	}
+}
+
+country_event = {
+	id = byzantium.14
+	title = byzantium.14.t
+	desc = byzantium.14.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.2.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			GRE = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.15 days = 1 }
+			}
+		}
+	}
+	option = {
+		name = byzantium.2.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = GRE
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		GRE = { transfer_state = 342 }
+		GRE = { transfer_state = 345 }
+		GRE = { transfer_state = 356 }
+		GRE = { transfer_state = 355 }
+		GRE = { transfer_state = 354 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.2 days = 1 }
+	}
+}
+
+country_event = {
+	id = byzantium.15
+	title = byzantium.15.t
+	desc = byzantium.15.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.3.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 342 345 356 355 354 }
+		}
+	}
+}
+
+### RECLAIMING RHODES
+
+country_event = {
+	id = byzantium.16
+	title = byzantium.16.t
+	desc = byzantium.16.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.1.a # Claim
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 164
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = ITA
+				}
+			}
+		}
+		every_country {
+			limit = {
+				owns_state = 164
+				NOT = { tag = GRE }
+			}
+			country_event = { id = byzantium.17 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.1.b # Peace
+		ai_chance = { factor = 10 }
+		news_event = { id = byznews.1 days = 1 }
+	}
+}
+
+country_event = {
+	id = byzantium.17
+	title = byzantium.17.t
+	desc = byzantium.17.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.2.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			164 = { add_core_of = GRE }
+			GRE = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.18 days = 1 }
+			}
+		}
+	}
+	option = {
+		name = byzantium.2.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = GRE
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		GRE = { transfer_state = 164 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.2 days = 1 }
+	}
+}
+
+country_event = {
+	id = byzantium.18
+	title = byzantium.18.t
+	desc = byzantium.18.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.3.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 164 }
+		}
+	}
+}
+
+### CLAIMING CYPRUS
+
+country_event = {
+	id = byzantium.19
+	title = byzantium.19.t
+	desc = byzantium.19.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.1.a # Claim
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 183
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = ENG
+				}
+			}
+		}
+		every_country {
+			limit = {
+				owns_state = 183
+				NOT = { tag = GRE }
+			}
+			country_event = { id = byzantium.20 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.1.b # Peace
+		ai_chance = { factor = 15 }
+		news_event = { id = byznews.1 days = 1 }
+	}
+}
+
+country_event = {
+	id = byzantium.20
+	title = byzantium.20.t
+	desc = byzantium.20.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.2.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			183 = { add_core_of = GRE }
+			GRE = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		GRE = {
+			country_event = { id = byzantium.21 days = 1 }
+		}
+	}
+	option = {
+		name = byzantium.2.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = GRE
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		GRE = { transfer_state = 183 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.2 days = 1 }
+	}
+}
+
+country_event = {
+	id = byzantium.21
+	title = byzantium.21.t
+	desc = byzantium.21.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.3.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 183 }
+		}
+	}
+}
+
+### PUPPET ROMANIA ###
+
+# Event Romania Gets
+
+country_event = {
+	id = byzantium.22
+	title = byzantium.22.t
+	desc = byzantium.22.d
+	picture = GFX_report_event_romanian_soldiers
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = byzantium.22.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.8 }
+				factor = 2
+			}
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.5 }
+				factor = 10
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.23 }
+	}
+
+	option = { #no
+		name = byzantium.22.b
+		ai_chance = {
+			factor = 70
+			modifier = {
+				is_in_faction = no
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.24 }	
+	}
+}
+
+# Romania Agrees
+
+country_event = {
+	id = byzantium.23 
+	title = byzantium.23.t
+	desc = byzantium.23.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.23.a
+		puppet = ROM
+	}
+}
+
+# Romania Refuses
+
+country_event = {
+	id = byzantium.24
+	title = byzantium.24.t
+	desc = byzantium.24.d
+	picture = GFX_report_event_bulgarian_soldiers
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.24.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 1 }
+				factor = 10
+			}
+			modifier = {
+				ROM = {
+					is_in_faction = yes
+				}
+				factor = 10
+			}
+		}	
+	}
+
+	option = { #war
+		name = byzantium.24.b
+		ai_chance = {
+			factor = 90
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = ROM
+		}
+	}
+}
+
+### LIBERATE ROMANIA ###
+
+# Romania Does Not Exist
+
+country_event = { 
+	id = byzantium.25
+	title = byzantium.25.t
+	desc = byzantium.25.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.25.a # Send Demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				any_country {
+					OR = {
+						owns_state = 46
+						owns_state = 79
+						owns_state = 81
+					}
+					AND = {
+						NOT = {
+							OR = {
+								tag = GRE
+								is_in_faction_with = GRE
+								is_puppet_of = GRE
+							}
+						}
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 46
+					owns_state = 79
+					owns_state = 81
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = GRE
+							is_in_faction_with = GRE
+							is_puppet_of = GRE
+						}
+					}
+				}
+			}
+			country_event = { id = byzantium.26 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.25.b # Do Not Send Demand
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# Owner Gets This Event
+
+country_event = {
+	id = byzantium.26
+	title = byzantium.26.t
+	desc = byzantium.26.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Owner Refuses
+		name = byzantium.26.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			GRE = {
+				create_wargoal = {
+					type = liberate_wargoal
+					target = ROM
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.27 days = 1 }
+			}
+		}
+	}
+	option = { # Owner Relents
+		name = byzantium.26.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		release = ROM
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.39 days = 1 }
+	}
+}
+
+# Byz Gets Wargoal
+
+country_event = {
+	id = byzantium.27
+	title = byzantium.27.t
+	desc = byzantium.27.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.27.a
+		create_wargoal = {
+			type = liberate_wargoal
+			target = FROM
+			generator = { 46 79 81 }
+		}
+	}
+}
+
+### PUPPET GEORGIA ###
+
+# Event Georgia Gets
+
+country_event = {
+	id = byzantium.28
+	title = byzantium.28.t
+	desc = byzantium.28.d
+	picture = GFX_report_event_romanian_soldiers
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = byzantium.22.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.8 }
+				factor = 2
+			}
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.5 }
+				factor = 10
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.29 }
+	}
+
+	option = { #no
+		name = byzantium.22.b
+		ai_chance = {
+			factor = 70
+			modifier = {
+				is_in_faction = no
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.30 }	
+	}
+}
+
+# Georgia Agrees
+
+country_event = {
+	id = byzantium.29 
+	title = byzantium.29.t
+	desc = byzantium.29.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.23.a
+		puppet = GEO
+	}
+}
+
+# Georgia Refuses
+
+country_event = {
+	id = byzantium.30
+	title = byzantium.30.t
+	desc = byzantium.30.d
+	picture = GFX_report_event_bulgarian_soldiers
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.24.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 1 }
+				factor = 10
+			}
+			modifier = {
+				GEO = {
+					is_in_faction = yes
+				}
+				factor = 10
+			}
+		}	
+	}
+
+	option = { #war
+		name = byzantium.24.b
+		ai_chance = {
+			factor = 90
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = GEO
+		}
+	}
+}
+
+### LIBERATE GEORGIA ###
+
+# Georgia Does Not Exist
+
+country_event = { 
+	id = byzantium.31
+	title = byzantium.31.t
+	desc = byzantium.31.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.25.a # Send Demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				any_country {
+					owns_state = 231
+					AND = {
+						NOT = {
+							OR = {
+								tag = GRE
+								is_in_faction_with = GRE
+								is_puppet_of = GRE
+							}
+						}
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+		}
+		every_country {
+			limit = {
+				owns_state = 231
+				AND = {
+					NOT = {
+						OR = {
+							tag = GRE
+							is_in_faction_with = GRE
+							is_puppet_of = GRE
+						}
+					}
+				}
+			}
+			country_event = { id = byzantium.32 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.25.b # Do Not Send Demand
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# Owner Gets This Event
+
+country_event = {
+	id = byzantium.32
+	title = byzantium.32.t
+	desc = byzantium.32.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Owner Refuses
+		name = byzantium.26.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			GRE = {
+				create_wargoal = {
+					type = liberate_wargoal
+					target = GEO
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.33 days = 1 }
+			}
+		}
+	}
+	option = { # Owner Relents
+		name = byzantium.26.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		release = GEO
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.39 days = 1 }
+	}
+}
+
+# Byz Gets Wargoal
+
+country_event = {
+	id = byzantium.33
+	title = byzantium.33.t
+	desc = byzantium.33.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.27.a
+		create_wargoal = {
+			type = liberate_wargoal
+			target = FROM
+			generator = { 231 }
+		}
+	}
+}
+
+### PUPPET HUNGARY ###
+
+# Event Hungary Gets
+
+country_event = {
+	id = byzantium.34
+	title = byzantium.34.t
+	desc = byzantium.34.d
+	picture = GFX_report_event_romanian_soldiers
+	
+	is_triggered_only = yes
+	
+	option = { # We must accept.
+		name = byzantium.22.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.8 }
+				factor = 2
+			}
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.5 }
+				factor = 10
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.35 }
+	}
+
+	option = { # Never!
+		name = byzantium.22.b
+		ai_chance = {
+			factor = 70
+			modifier = {
+				is_in_faction = no
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.36 }	
+	}
+}
+
+# Hungary Agrees
+
+country_event = {
+	id = byzantium.35 
+	title = byzantium.35.t
+	desc = byzantium.35.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+
+	option = { # Excellent.
+		name = byzantium.23.a
+		puppet = HUN
+	}
+}
+
+# Hungary Refuses
+
+country_event = {
+	id = byzantium.36
+	title = byzantium.36.t
+	desc = byzantium.36.d
+	picture = GFX_report_event_bulgarian_soldiers
+	
+	is_triggered_only = yes
+
+	option = { # Oh well, it was a nice try.
+		name = byzantium.24.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 1 }
+				factor = 10
+			}
+			modifier = {
+				HUN = {
+					is_in_faction = yes
+				}
+				factor = 10
+			}
+		}	
+	}
+
+	option = { # WAR!
+		name = byzantium.24.b
+		ai_chance = {
+			factor = 90
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = HUN
+		}
+	}
+}
+
+### LIBERATE HUNGARY ###
+
+# Hungary Does Not Exist
+
+country_event = { 
+	id = byzantium.37
+	title = byzantium.37.t
+	desc = byzantium.37.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.25.a # Send Demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				any_country {
+					OR = {
+						owns_state = 43
+						owns_state = 154
+						owns_state = 155
+					}
+					AND = {
+						NOT = {
+							OR = {
+								tag = GRE
+								is_in_faction_with = GRE
+								is_puppet_of = GRE
+							}
+						}
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 43
+					owns_state = 154
+					owns_state = 155
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = GRE
+							is_in_faction_with = GRE
+							is_puppet_of = GRE
+						}
+					}
+				}
+			}
+			country_event = { id = byzantium.38 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.25.b # Do Not Send Demand
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# Owner Gets This Event
+
+country_event = {
+	id = byzantium.38
+	title = byzantium.38.t
+	desc = byzantium.38.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Owner Refuses
+		name = byzantium.26.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			GRE = {
+				create_wargoal = {
+					type = liberate_wargoal
+					target = HUN
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.39 days = 1 }
+			}
+		}
+	}
+	option = { # Owner Relents
+		name = byzantium.26.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		release = HUN
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.39 days = 1 }
+	}
+}
+
+# Byz Gets Wargoal
+
+country_event = {
+	id = byzantium.39
+	title = byzantium.39.t
+	desc = byzantium.39.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.27.a
+		create_wargoal = {
+			type = liberate_wargoal
+			target = FROM
+			generator = { 43 154 155 }
+		}
+	}
+}
+
+### PUPPET IRAQ ###
+
+# Event Iraq Gets
+
+country_event = {
+	id = byzantium.40
+	title = byzantium.40.t
+	desc = byzantium.40.d
+	picture = GFX_report_event_romanian_soldiers
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = byzantium.22.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.8 }
+				factor = 2
+			}
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.5 }
+				factor = 10
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.41 }
+	}
+
+	option = { #no
+		name = byzantium.22.b
+		ai_chance = {
+			factor = 70
+			modifier = {
+				is_in_faction = no
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.42 }	
+	}
+}
+
+# Iraq Agrees
+
+country_event = {
+	id = byzantium.41 
+	title = byzantium.41.t
+	desc = byzantium.41.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.23.a
+		puppet = IRQ
+	}
+}
+
+# Iraq Refuses
+
+country_event = {
+	id = byzantium.42
+	title = byzantium.42.t
+	desc = byzantium.42.d
+	picture = GFX_report_event_bulgarian_soldiers
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.24.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 1 }
+				factor = 10
+			}
+			modifier = {
+				IRQ = {
+					is_in_faction = yes
+				}
+				factor = 10
+			}
+		}	
+	}
+
+	option = { #war
+		name = byzantium.24.b
+		ai_chance = {
+			factor = 90
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = IRQ
+		}
+	}
+}
+
+### LIBERATE IRAQ ###
+
+# Iraq Does Not Exist
+
+country_event = { 
+	id = byzantium.43
+	title = byzantium.43.t
+	desc = byzantium.43.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.25.a # Send Demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				any_country {
+					OR = {
+						owns_state = 291
+						owns_state = 675
+						owns_state = 676
+					}
+					AND = {
+						NOT = {
+							OR = {
+								tag = GRE
+								is_in_faction_with = GRE
+								is_puppet_of = GRE
+							}
+						}
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 291
+					owns_state = 675
+					owns_state = 676
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = GRE
+							is_in_faction_with = GRE
+							is_puppet_of = GRE
+						}
+					}
+				}
+			}
+			country_event = { id = byzantium.44 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.25.b # Do Not Send Demand
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# Owner Gets This Event
+
+country_event = {
+	id = byzantium.44
+	title = byzantium.44.t
+	desc = byzantium.44.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Owner Refuses
+		name = byzantium.26.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			GRE = {
+				create_wargoal = {
+					type = liberate_wargoal
+					target = IRQ
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.45 days = 1 }
+			}
+		}
+	}
+	option = { # Owner Relents
+		name = byzantium.26.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		release = IRQ
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.39 days = 1 }
+	}
+}
+
+# Byz Gets Wargoal
+
+country_event = {
+	id = byzantium.45
+	title = byzantium.45.t
+	desc = byzantium.45.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.27.a
+		create_wargoal = {
+			type = liberate_wargoal
+			target = FROM
+			generator = { 291 675 676 }
+		}
+	}
+}
+
+### PUPPET AUSTRIA ###
+
+# Event Austria Gets
+
+country_event = {
+	id = byzantium.46
+	title = byzantium.46.t
+	desc = byzantium.46.d
+	picture = GFX_report_event_romanian_soldiers
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = byzantium.22.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.8 }
+				factor = 2
+			}
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.5 }
+				factor = 10
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.47 }
+	}
+
+	option = { #no
+		name = byzantium.22.b
+		ai_chance = {
+			factor = 70
+			modifier = {
+				is_in_faction = no
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.48 }	
+	}
+}
+
+# Austria Agrees
+
+country_event = {
+	id = byzantium.47 
+	title = byzantium.47.t
+	desc = byzantium.47.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.23.a
+		puppet = AUS
+	}
+}
+
+# Austria Refuses
+
+country_event = {
+	id = byzantium.48
+	title = byzantium.48.t
+	desc = byzantium.48.d
+	picture = GFX_report_event_bulgarian_soldiers
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.24.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 1 }
+				factor = 10
+			}
+			modifier = {
+				AUS = {
+					is_in_faction = yes
+				}
+				factor = 10
+			}
+		}	
+	}
+
+	option = { #war
+		name = byzantium.24.b
+		ai_chance = {
+			factor = 90
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = AUS
+		}
+	}
+}
+
+### LIBERATE AUSTRIA ###
+
+# Austria Does Not Exist
+
+country_event = { 
+	id = byzantium.49
+	title = byzantium.49.t
+	desc = byzantium.49.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.25.a # Send Demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				any_country {
+					OR = {
+						owns_state = 4
+						owns_state = 152
+						owns_state = 153
+					}
+					AND = {
+						NOT = {
+							OR = {
+								tag = GRE
+								is_in_faction_with = GRE
+								is_puppet_of = GRE
+							}
+						}
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 4
+					owns_state = 152
+					owns_state = 153
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = GRE
+							is_in_faction_with = GRE
+							is_puppet_of = GRE
+						}
+					}
+				}
+			}
+			country_event = { id = byzantium.50 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.25.b # Do Not Send Demand
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# Owner Gets This Event
+
+country_event = {
+	id = byzantium.50
+	title = byzantium.50.t
+	desc = byzantium.50.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Owner Refuses
+		name = byzantium.26.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			GRE = {
+				create_wargoal = {
+					type = liberate_wargoal
+					target = AUS
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.51 days = 1 }
+			}
+		}
+	}
+	option = { # Owner Relents
+		name = byzantium.26.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		release = AUS
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.39 days = 1 }
+	}
+}
+
+# Byz Gets Wargoal
+
+country_event = {
+	id = byzantium.51
+	title = byzantium.51.t
+	desc = byzantium.51.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.27.a
+		create_wargoal = {
+			type = liberate_wargoal
+			target = FROM
+			generator = { 4 152 153 }
+		}
+	}
+}
+
+### PUPPET SWISS ###
+
+# Event Swiss Gets
+
+country_event = {
+	id = byzantium.52
+	title = byzantium.52.t
+	desc = byzantium.52.d
+	picture = GFX_report_event_romanian_soldiers
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = byzantium.22.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.8 }
+				factor = 2
+			}
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.5 }
+				factor = 10
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.53 }
+	}
+
+	option = { #no
+		name = byzantium.22.b
+		ai_chance = {
+			factor = 70
+			modifier = {
+				is_in_faction = no
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.54 }	
+	}
+}
+
+# Swiss Agrees
+
+country_event = {
+	id = byzantium.53 
+	title = byzantium.53.t
+	desc = byzantium.53.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.23.a
+		puppet = SWI
+	}
+}
+
+# Swiss Refuses
+
+country_event = {
+	id = byzantium.54
+	title = byzantium.54.t
+	desc = byzantium.54.d
+	picture = GFX_report_event_bulgarian_soldiers
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.24.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 1 }
+				factor = 10
+			}
+			modifier = {
+				SWI = {
+					is_in_faction = yes
+				}
+				factor = 10
+			}
+		}	
+	}
+
+	option = { #war
+		name = byzantium.24.b
+		ai_chance = {
+			factor = 90
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SWI
+		}
+	}
+}
+
+### LIBERATE SWISS ###
+
+# Swiss Does Not Exist
+
+country_event = { 
+	id = byzantium.55
+	title = byzantium.55.t
+	desc = byzantium.55.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.25.a # Send Demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				any_country {
+					OR = {
+						owns_state = 3
+						owns_state = 151
+					}
+					AND = {
+						NOT = {
+							OR = {
+								tag = GRE
+								is_in_faction_with = GRE
+								is_puppet_of = GRE
+							}
+						}
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 3
+					owns_state = 151
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = GRE
+							is_in_faction_with = GRE
+							is_puppet_of = GRE
+						}
+					}
+				}
+			}
+			country_event = { id = byzantium.56 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.25.b # Do Not Send Demand
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# Owner Gets This Event
+
+country_event = {
+	id = byzantium.56
+	title = byzantium.56.t
+	desc = byzantium.56.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Owner Refuses
+		name = byzantium.26.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			GRE = {
+				create_wargoal = {
+					type = liberate_wargoal
+					target = SWI
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.57 days = 1 }
+			}
+		}
+	}
+	option = { # Owner Relents
+		name = byzantium.26.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		release = SWI
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.39 days = 1 }
+	}
+}
+
+# Byz Gets Wargoal
+
+country_event = {
+	id = byzantium.57
+	title = byzantium.57.t
+	desc = byzantium.57.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.27.a
+		create_wargoal = {
+			type = liberate_wargoal
+			target = FROM
+			generator = { 3 151 }
+		}
+	}
+}
+
+### PUPPET ARABIA ###
+
+# Event Arabia Gets
+
+country_event = {
+	id = byzantium.58
+	title = byzantium.58.t
+	desc = byzantium.58.d
+	picture = GFX_report_event_romanian_soldiers
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = byzantium.22.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.8 }
+				factor = 2
+			}
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.5 }
+				factor = 10
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.59 }
+	}
+
+	option = { #no
+		name = byzantium.22.b
+		ai_chance = {
+			factor = 70
+			modifier = {
+				is_in_faction = no
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.60 }	
+	}
+}
+
+# Arabia Agrees
+
+country_event = {
+	id = byzantium.59 
+	title = byzantium.59.t
+	desc = byzantium.59.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.23.a
+		puppet = SAU
+	}
+}
+
+# Arabia Refuses
+
+country_event = {
+	id = byzantium.60
+	title = byzantium.60.t
+	desc = byzantium.60.d
+	picture = GFX_report_event_bulgarian_soldiers
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.24.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 1 }
+				factor = 10
+			}
+			modifier = {
+				SAU = {
+					is_in_faction = yes
+				}
+				factor = 10
+			}
+		}	
+	}
+
+	option = { #war
+		name = byzantium.24.b
+		ai_chance = {
+			factor = 90
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SAU
+		}
+	}
+}
+
+### LIBERATE ARABIA ###
+
+# Arabia Does Not Exist
+
+country_event = { 
+	id = byzantium.61
+	title = byzantium.61.t
+	desc = byzantium.61.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.25.a # Send Demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				any_country {
+					OR = {
+						owns_state = 292
+						owns_state = 678
+						owns_state = 679
+					}
+					AND = {
+						NOT = {
+							OR = {
+								tag = GRE
+								is_in_faction_with = GRE
+								is_puppet_of = GRE
+							}
+						}
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 292
+					owns_state = 678
+					owns_state = 679
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = GRE
+							is_in_faction_with = GRE
+							is_puppet_of = GRE
+						}
+					}
+				}
+			}
+			country_event = { id = byzantium.62 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.25.b # Do Not Send Demand
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# Owner Gets This Event
+
+country_event = {
+	id = byzantium.62
+	title = byzantium.62.t
+	desc = byzantium.62.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Owner Refuses
+		name = byzantium.26.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			GRE = {
+				create_wargoal = {
+					type = liberate_wargoal
+					target = SAU
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.63 days = 1 }
+			}
+		}
+	}
+	option = { # Owner Relents
+		name = byzantium.26.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		release = SAU
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.39 days = 1 }
+	}
+}
+
+# Byz Gets Wargoal
+
+country_event = {
+	id = byzantium.63
+	title = byzantium.63.t
+	desc = byzantium.63.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.27.a
+		create_wargoal = {
+			type = liberate_wargoal
+			target = FROM
+			generator = { 292 678 679 }
+		}
+	}
+}
+
+### PUPPET GERMANY ###
+
+# Event Germany Gets
+
+country_event = {
+	id = byzantium.64
+	title = byzantium.64.t
+	desc = byzantium.64.d
+	picture = GFX_report_event_romanian_soldiers
+	
+	is_triggered_only = yes
+	
+	option = { #sure
+		name = byzantium.22.a
+		ai_chance = {
+			factor = 30
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.8 }
+				factor = 2
+			}
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 0.5 }
+				factor = 10
+			}
+			modifier = {
+				is_in_faction = yes
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.65 }
+	}
+
+	option = { #no
+		name = byzantium.22.b
+		ai_chance = {
+			factor = 70
+			modifier = {
+				is_in_faction = no
+				factor = 0.5
+			}
+		}
+		GRE = { country_event = byzantium.66 }	
+	}
+}
+
+# Germany Agrees
+
+country_event = {
+	id = byzantium.65 
+	title = byzantium.65.t
+	desc = byzantium.65.d
+	picture = GFX_report_event_generic_sign_treaty2
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.23.a
+		puppet = GER
+	}
+}
+
+# Germany Refuses
+
+country_event = {
+	id = byzantium.66
+	title = byzantium.66.t
+	desc = byzantium.66.d
+	picture = GFX_report_event_bulgarian_soldiers
+	
+	is_triggered_only = yes
+
+	option = { #cool
+		name = byzantium.24.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				strength_ratio = { tag = GRE ratio < 1 }
+				factor = 10
+			}
+			modifier = {
+				GER = {
+					is_in_faction = yes
+				}
+				factor = 10
+			}
+		}	
+	}
+
+	option = { #war
+		name = byzantium.24.b
+		ai_chance = {
+			factor = 90
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = GER
+		}
+	}
+}
+
+### LIBERATE GERMANY ###
+
+# Germany Does Not Exist
+
+country_event = { 
+	id = byzantium.67
+	title = byzantium.67.t
+	desc = byzantium.67.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.25.a # Send Demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				any_country {
+					OR = {
+						owns_state = 42
+						owns_state = 50
+						owns_state = 51
+						owns_state = 52
+						owns_state = 53
+						owns_state = 54
+						owns_state = 55
+						owns_state = 56
+						owns_state = 57
+						owns_state = 58
+						owns_state = 59
+						owns_state = 60
+					}
+					AND = {
+						NOT = {
+							OR = {
+								tag = GRE
+								is_in_faction_with = GRE
+								is_puppet_of = GRE
+							}
+						}
+					}
+					strength_ratio = {
+						tag = GRE ratio > 1.5 # more than 150% the strength of Byzantium
+					}
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 42
+					owns_state = 50
+					owns_state = 51
+					owns_state = 52
+					owns_state = 53
+					owns_state = 54
+					owns_state = 55
+					owns_state = 56
+					owns_state = 57
+					owns_state = 58
+					owns_state = 59
+					owns_state = 60
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = GRE
+							is_in_faction_with = GRE
+							is_puppet_of = GRE
+						}
+					}
+				}
+			}
+			country_event = { id = byzantium.68 days = 1 }
+		}
+	}
+	
+	option = {
+		name = byzantium.25.b # Do Not Send Demand
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+# Owner Gets This Event
+
+country_event = {
+	id = byzantium.68
+	title = byzantium.68.t
+	desc = byzantium.68.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Owner Refuses
+		name = byzantium.26.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		effect_tooltip = {
+			GRE = {
+				create_wargoal = {
+					type = liberate_wargoal
+					target = GER
+				}
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = { id = byzantium.69 days = 1 }
+			}
+		}
+	}
+	option = { # Owner Relents
+		name = byzantium.26.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = GRE ratio < 0.5 } #less than half the strength of Byzantium
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = GRE ratio < 0.25 } #less than 1/4 the strength of Byzantium
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = GRE ratio < 0.1 } #less than 10% the strength of Byzantium
+			}
+		}
+		release = GER
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			GRE = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = byznews.39 days = 1 }
+	}
+}
+
+# Byz Gets Wargoal
+
+country_event = {
+	id = byzantium.69
+	title = byzantium.69.t
+	desc = byzantium.69.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = byzantium.27.a
+		create_wargoal = {
+			type = liberate_wargoal
+			target = FROM
+			generator = { 42 50 51 52 53 54 55 56 57 58 59 60 }
+		}
+	}
+}
+
+# Varangian Guard Recruitment
+
+country_event = {
+	id = byzantium.70
+	title = byzantium.70.t	
+	desc = byzantium.70.d
+	picture = GFX_report_event_german_volunteers
+
+	is_triggered_only = yes
+
+	option = { 
+		name = byzantium.70.a
+		ai_chance = {
+			base = 100
+		}
+
+		VG_set_templates = yes
+
+		if = {
+			limit = {
+				has_country_flag = varangian_armored_imp
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 341 }
+				create_unit = {
+					division = "name = \"Varángōn Thráki\" division_template = \"Varangon Tethorakismeni Velti\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_mechanized_upg
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 341 }
+				create_unit = {
+					division = "name = \"Varángōn Thráki\" division_template = \"Varangon Michanokiniti Anav\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_mechanized
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 341 }
+				create_unit = {
+					division = "name = \"Varángōn Thráki\" division_template = \"Varangon Michanokiniti\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_armored_upg
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 341 }
+				create_unit = {
+					division = "name = \"Varángōn Thráki\" division_template = \"Varangon Tethorakismeni Anav\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_armored
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 341 }
+				create_unit = {
+					division = "name = \"Varángōn Thráki\" division_template = \"Varangon Tethorakismeni\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_motorized
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 341 }
+				create_unit = {
+					division = "name = \"Varángōn Thráki\" division_template = \"Varangon Michanopoiimeni\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else = {
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 341 }
+				create_unit = {
+					division = "name = \"Varángōn Thráki\" division_template = \"Varangon Pezikou\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = byzantium.71
+	title = byzantium.71.t	
+	desc = byzantium.71.d
+	picture = GFX_report_event_german_volunteers
+
+	is_triggered_only = yes
+
+	option = { 
+		name = byzantium.71.a
+		ai_chance = {
+			base = 100
+		}
+
+		VG_set_templates = yes
+
+		if = {
+			limit = {
+				has_country_flag = varangian_armored_imp
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 47 }
+				create_unit = {
+					division = "name = \"Varángōn Attikí\" division_template = \"Varangon Tethorakismeni Velti\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_mechanized_upg
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 47 }
+				create_unit = {
+					division = "name = \"Varángōn Attikí\" division_template = \"Varangon Michanokiniti Anav\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_mechanized
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 47 }
+				create_unit = {
+					division = "name = \"Varángōn Attikí\" division_template = \"Varangon Michanokiniti\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_armored_upg
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 47 }
+				create_unit = {
+					division = "name = \"Varángōn Attikí\" division_template = \"Varangon Tethorakismeni Anav\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_armored
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 47 }
+				create_unit = {
+					division = "name = \"Varángōn Attikí\" division_template = \"Varangon Tethorakismeni\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_motorized
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 47 }
+				create_unit = {
+					division = "name = \"Varángōn Attikí\" division_template = \"Varangon Michanopoiimeni\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else = {
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 47 }
+				create_unit = {
+					division = "name = \"Varángōn Attikí\" division_template = \"Varangon Pezikou\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = byzantium.72
+	title = byzantium.72.t	
+	desc = byzantium.72.d
+	picture = GFX_report_event_german_volunteers
+
+	is_triggered_only = yes
+
+	option = { 
+		name = byzantium.72.a
+		ai_chance = {
+			base = 100
+		}
+
+		VG_set_templates = yes
+
+		if = {
+			limit = {
+				has_country_flag = varangian_armored_imp
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 211 }
+				create_unit = {
+					division = "name = \"Varángōn Voúlgar\" division_template = \"Varangon Tethorakismeni Velti\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_mechanized_upg
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 211 }
+				create_unit = {
+					division = "name = \"Varángōn Voúlgar\" division_template = \"Varangon Michanokiniti Anav\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_mechanized
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 211 }
+				create_unit = {
+					division = "name = \"Varángōn Voúlgar\" division_template = \"Varangon Michanokiniti\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_armored_upg
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 211 }
+				create_unit = {
+					division = "name = \"Varángōn Voúlgar\" division_template = \"Varangon Tethorakismeni Anav\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_armored
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 211 }
+				create_unit = {
+					division = "name = \"Varángōn Voúlgar\" division_template = \"Varangon Tethorakismeni\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_motorized
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 211 }
+				create_unit = {
+					division = "name = \"Varángōn Voúlgar\" division_template = \"Varangon Michanopoiimeni\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else = {
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 211 }
+				create_unit = {
+					division = "name = \"Varángōn Voúlgar\" division_template = \"Varangon Pezikou\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = byzantium.73
+	title = byzantium.73.t	
+	desc = byzantium.73.d
+	picture = GFX_report_event_german_volunteers
+
+	is_triggered_only = yes
+
+	option = { 
+		name = byzantium.73.a
+		ai_chance = {
+			base = 100
+		}
+
+		VG_set_templates = yes
+
+		if = {
+			limit = {
+				has_country_flag = varangian_armored_imp
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 106 }
+				create_unit = {
+					division = "name = \"Varángōn Makedón\" division_template = \"Varangon Tethorakismeni Velti\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_mechanized_upg
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 106 }
+				create_unit = {
+					division = "name = \"Varángōn Makedón\" division_template = \"Varangon Michanokiniti Anav\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_mechanized
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 106 }
+				create_unit = {
+					division = "name = \"Varángōn Makedón\" division_template = \"Varangon Michanokiniti\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_armored_upg
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 106 }
+				create_unit = {
+					division = "name = \"Varángōn Makedón\" division_template = \"Varangon Tethorakismeni Anav\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_armored
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 106 }
+				create_unit = {
+					division = "name = \"Varángōn Makedón\" division_template = \"Varangon Tethorakismeni\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_motorized
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 106 }
+				create_unit = {
+					division = "name = \"Varángōn Makedón\" division_template = \"Varangon Michanopoiimeni\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else = {
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 106 }
+				create_unit = {
+					division = "name = \"Varángōn Makedón\" division_template = \"Varangon Pezikou\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = byzantium.74
+	title = byzantium.74.t	
+	desc = byzantium.74.d
+	picture = GFX_report_event_german_volunteers
+
+	is_triggered_only = yes
+
+	option = { 
+		name = byzantium.74.a
+		ai_chance = {
+			base = 100
+		}
+
+		VG_set_templates = yes
+
+		if = {
+			limit = {
+				has_country_flag = varangian_armored_imp
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 354 }
+				create_unit = {
+					division = "name = \"Varángōn Póntos\" division_template = \"Varangon Tethorakismeni Velti\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_mechanized_upg
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 354 }
+				create_unit = {
+					division = "name = \"Varángōn Póntos\" division_template = \"Varangon Michanokiniti Anav\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_mechanized
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 354 }
+				create_unit = {
+					division = "name = \"Varángōn Póntos\" division_template = \"Varangon Michanokiniti\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_armored_upg
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 354 }
+				create_unit = {
+					division = "name = \"Varángōn Póntos\" division_template = \"Varangon Tethorakismeni Anav\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_armored
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 354 }
+				create_unit = {
+					division = "name = \"Varángōn Póntos\" division_template = \"Varangon Tethorakismeni\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_motorized
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 354 }
+				create_unit = {
+					division = "name = \"Varángōn Póntos\" division_template = \"Varangon Michanopoiimeni\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else = {
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 354 }
+				create_unit = {
+					division = "name = \"Varángōn Póntos\" division_template = \"Varangon Pezikou\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = byzantium.75
+	title = byzantium.75.t	
+	desc = byzantium.75.d
+	picture = GFX_report_event_german_volunteers
+
+	is_triggered_only = yes
+
+	option = { 
+		name = byzantium.75.a
+		ai_chance = {
+			base = 100
+		}
+
+		VG_set_templates = yes
+
+		if = {
+			limit = {
+				has_country_flag = varangian_armored_imp
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 339 }
+				create_unit = {
+					division = "name = \"Varángōn Kivyrrai\" division_template = \"Varangon Tethorakismeni Velti\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_mechanized_upg
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 339 }
+				create_unit = {
+					division = "name = \"Varángōn Kivyrrai\" division_template = \"Varangon Michanokiniti Anav\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_mechanized
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 339 }
+				create_unit = {
+					division = "name = \"Varángōn Kivyrrai\" division_template = \"Varangon Michanokiniti\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_armored_upg
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 339 }
+				create_unit = {
+					division = "name = \"Varángōn Kivyrrai\" division_template = \"Varangon Tethorakismeni Anav\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_armored
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 339 }
+				create_unit = {
+					division = "name = \"Varángōn Kivyrrai\" division_template = \"Varangon Tethorakismeni\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = varangian_motorized
+			}
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 339 }
+				create_unit = {
+					division = "name = \"Varángōn Kivyrrai\" division_template = \"Varangon Michanopoiimeni\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+		else = {
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 339 }
+				create_unit = {
+					division = "name = \"Varángōn Kivyrrai\" division_template = \"Varangon Pezikou\" start_experience_factor = 1.0 start_equipment_factor = 0.5" 
+					owner = GRE
+				}
+			}
+		}
+	}
+}
+
+### Choose your flag
+
+country_event = {
+	id = byzantium.76
+	title = byzantium.76.t
+	desc = byzantium.76.d
+	picture = GFX_report_event_byzflag1
+
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.76.a # I'll check the St. George and Palaiologos aisle.
+		ai_chance = { factor = 25 }
+		country_event = byzantium.77
+	}
+
+	option = {
+		name = byzantium.76.b # What's in the double headed eagle aisle?
+		ai_chance = { factor = 25 }
+		country_event = byzantium.78
+	}
+
+	option = {
+		name = byzantium.76.c # I'm in the mood for some red, black, and blue.
+		ai_chance = { factor = 25 }
+		country_event = byzantium.79
+	}
+
+	option = {
+		name = byzantium.76.e # Oh look, a special on a straight Palaiologos.
+		ai_chance = { factor = 25 }
+		drop_cosmetic_tag = yes
+	}
+}
+
+country_event = {
+	id = byzantium.77
+	title = byzantium.77.t
+	desc = byzantium.77.d
+	picture = GFX_report_event_byzflag2
+
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.77.a # Approved for Victoria 3, whoops, better hide that label.
+		ai_chance = { factor = 25 }
+		set_cosmetic_tag = BYZ_1A
+	}
+
+	option = {
+		name = byzantium.77.b # They left the B's off this one.
+		ai_chance = { factor = 25 }
+		set_cosmetic_tag = BYZ_1B
+	}
+
+	option = {
+		name = byzantium.77.c # And no crosses on this one. That's different.
+		ai_chance = { factor = 25 }
+		set_cosmetic_tag = BYZ_1C
+	}
+
+	option = {
+		name = byzantium.77.e # I'll check another aisle.
+		ai_chance = { factor = 0 }
+		country_event = byzantium.76
+	}
+}
+
+country_event = {
+	id = byzantium.78
+	title = byzantium.78.t
+	desc = byzantium.78.d
+	picture = GFX_report_event_byzflag3
+
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.78.a # Eagle, wreaths, and a chi rho? Wow!
+		ai_chance = { factor = 25 }
+		set_cosmetic_tag = BYZ_2A
+	}
+
+	option = {
+		name = byzantium.78.b # A crowned double eagle? Interesting.
+		ai_chance = { factor = 25 }
+		set_cosmetic_tag = BYZ_2B
+	}
+
+	option = {
+		name = byzantium.78.c # Red white and black with a german style. Nice.
+		ai_chance = { factor = 25 }
+		set_cosmetic_tag = BYZ_2C
+	}
+
+	option = {
+		name = byzantium.78.e # Hmmm. What's in the stripes aisle?
+		ai_chance = { factor = 25 }
+		country_event = byzantium.80
+	}
+}
+
+country_event = {
+	id = byzantium.79
+	title = byzantium.79.t
+	desc = byzantium.79.d
+	picture = GFX_report_event_byzflag5
+
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.79.a # Blue white and gold? Classy.
+		ai_chance = { factor = 25 }
+		set_cosmetic_tag = BYZ_3A
+	}
+
+	option = {
+		name = byzantium.79.b # Eagle, gear, and wheat? Aunt Syndie would love this one.
+		ai_chance = { factor = 25 }
+		set_cosmetic_tag = BYZ_3B
+	}
+
+	option = {
+		name = byzantium.79.c # Black and white? That's kind of stark.
+		ai_chance = { factor = 25 }
+		set_cosmetic_tag = BYZ_3C
+	}
+
+	option = {
+		name = byzantium.77.e # I'll check another aisle.
+		ai_chance = { factor = 0 }
+		country_event = byzantium.76
+	}
+}
+
+country_event = {
+	id = byzantium.80
+	title = byzantium.80.t
+	desc = byzantium.80.d
+	picture = GFX_report_event_byzflag4
+
+	is_triggered_only = yes
+
+	option = {
+		name = byzantium.80.a # Three horizontal stripes? Well it is popular.
+		ai_chance = { factor = 25 }
+		set_cosmetic_tag = BYZ_2D1
+	}
+
+	option = {
+		name = byzantium.80.b # One big and two little stripes. How very fashion forward.
+		ai_chance = { factor = 25 }
+		set_cosmetic_tag = BYZ_2D2
+	}
+
+	option = {
+		name = byzantium.80.c # These are more blocks than stripes. Wrong aisle?
+		ai_chance = { factor = 25 }
+		set_cosmetic_tag = BYZ_2D3
+	}
+
+	option = {
+		name = byzantium.77.e # I'll check another aisle.
+		ai_chance = { factor = 0 }
+		country_event = byzantium.76
+	}
+}

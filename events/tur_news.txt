@@ -1,0 +1,401 @@
+﻿# TURKEY NEWS
+
+add_namespace = turnews
+
+# Territorial Claims Not Pressed
+news_event = {
+	id = turnews.1
+	title = turnews.1.t
+	desc = turnews.1.d
+
+	picture = GFX_news_event_byz1
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = turnews.1.a
+		trigger = {
+			TAG = TUR
+		}
+	}
+	option = {
+		name = turnews.1.b
+		trigger = {
+			NOT = {
+				TAG = TUR
+			}
+		}
+	}
+}
+
+# Territory Surrendered
+news_event = {
+	id = turnews.2
+	title = turnews.2.t
+	desc = turnews.2.d
+
+	picture = GFX_news_event_byz2
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = turnews.2.a
+		trigger = {
+			TAG = TUR
+		}
+	}
+	option = {
+		name = turnews.2.b
+		trigger = {
+			NOT = {
+				TAG = TUR
+			}
+		}
+	}
+}
+
+# Sun Language Theory
+
+news_event = {
+	id = turnews.3
+	title = turnews.3.t
+	desc = turnews.3.d
+
+	picture = GFX_news_event_tur3
+
+	major = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = turnews.3.a
+		trigger = {
+			TAG = TUR
+		}
+	}
+	option = {
+		name = turnews.3.b
+		trigger = {
+			NOT = {
+				TAG = TUR
+			}
+		}
+	}
+}
+
+# The Six Pillars
+
+news_event = {
+	id = turnews.4
+	title = turnews.4.t
+	desc = turnews.4.d
+
+	picture = GFX_news_event_tur4
+
+	major = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = turnews.4.a
+		trigger = {
+			TAG = TUR
+		}
+	}
+	option = {
+		name = turnews.4.b
+		trigger = {
+			NOT = {
+				TAG = TUR
+			}
+		}
+	}
+}
+
+# Syria Free
+
+news_event = {
+	id = turnews.5
+	title = turnews.5.t
+	desc = turnews.5.d
+
+	picture = GFX_news_event_tur5
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = turnews.5.a
+		trigger = {
+			TAG = TUR
+		}
+	}
+	option = {
+		name = turnews.5.b
+		trigger = {
+			NOT = {
+				TAG = TUR
+			}
+		}
+	}
+}
+
+# Syria Not Free
+
+news_event = {
+	id = turnews.6
+	title = turnews.6.t
+	desc = turnews.6.d
+
+	picture = GFX_news_event_tur6
+
+	major = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = turnews.6.a
+		trigger = {
+			TAG = TUR
+		}
+	}
+	option = {
+		name = turnews.6.b
+		trigger = {
+			NOT = {
+				TAG = TUR
+			}
+		}
+	}
+}
+
+# Peace in the world peace at home
+
+news_event = {
+	id = turnews.7
+	title = turnews.7.t
+	desc = turnews.7.d
+
+	picture = GFX_news_event_tur7
+
+	major = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = turnews.7.a
+		trigger = {
+			TAG = TUR
+		}
+	}
+	option = {
+		name = turnews.7.b
+		trigger = {
+			NOT = {
+				TAG = TUR
+			}
+		}
+	}
+}
+
+# Saadabad Pact
+
+news_event = {
+	id = turnews.8
+	title = turnews.8.t
+	desc = turnews.8.d
+
+	picture = GFX_news_event_tur8
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = turnews.8.a
+		trigger = {
+			TAG = TUR
+		}
+	}
+	option = {
+		name = turnews.8.b
+		trigger = {
+			NOT = {
+				TAG = TUR
+			}
+		}
+	}
+}
+
+# French Aid
+news_event = {
+	id = turnews.40
+	title = turnews.40.t
+	desc = turnews.40.d
+
+	picture = GFX_news_event_020
+	
+	major = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = turnews.40.a
+		trigger = {
+			original_tag = TUR
+		}
+	}
+	option = {
+		name = turnews.40.b
+		trigger = {
+			NOT = {
+				original_tag = TUR
+			}
+		}
+	}
+}
+
+# Russian Aid
+news_event = {
+	id = turnews.41
+	title = turnews.41.t
+	desc = turnews.41.d
+
+	picture = GFX_news_event_020
+	
+	major = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = turnews.41.a
+		trigger = {
+			original_tag = TUR
+		}
+	}
+	option = {
+		name = turnews.41.b
+		trigger = {
+			NOT = {
+				original_tag = TUR
+			}
+		}
+	}
+}
+
+# Italian Aid
+news_event = {
+	id = turnews.42
+	title = turnews.42.t
+	desc = turnews.42.d
+
+	picture = GFX_news_event_020
+	
+	major = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = turnews.42.a
+		trigger = {
+			original_tag = TUR
+		}
+	}
+	option = {
+		name = turnews.42.b
+		trigger = {
+			NOT = {
+				original_tag = TUR
+			}
+		}
+	}
+}
+
+# French Carrier
+news_event = {
+	id = turnews.43
+	title = turnews.43.t
+	desc = turnews.43.d
+
+	picture = GFX_news_event_byz40
+	
+	major = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = turnews.43.a
+		trigger = {
+			original_tag = TUR
+		}
+	}
+	option = {
+		name = turnews.43.b
+		trigger = {
+			NOT = {
+				original_tag = TUR
+			}
+		}
+	}
+}
+
+# Russian Submarines
+news_event = {
+	id = turnews.44
+	title = turnews.44.t
+	desc = turnews.44.d
+
+	picture = GFX_news_event_byz41
+	
+	major = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = turnews.44.a
+		trigger = {
+			original_tag = TUR
+		}
+	}
+	option = {
+		name = turnews.44.b
+		trigger = {
+			NOT = {
+				original_tag = TUR
+			}
+		}
+	}
+}
+
+# Italian Battleship
+news_event = {
+	id = turnews.45
+	title = turnews.45.t
+	desc = turnews.45.d
+
+	picture = GFX_news_event_byz42
+	
+	major = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = turnews.45.a
+		trigger = {
+			original_tag = TUR
+		}
+	}
+	option = {
+		name = turnews.45.b
+		trigger = {
+			NOT = {
+				original_tag = TUR
+			}
+		}
+	}
+}

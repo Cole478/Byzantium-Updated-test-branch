@@ -1,0 +1,138 @@
+﻿# BYZANTINE RENAMES
+
+## The goal here is to add renames for every state the Byz takes.  Of course there are 700+ states so the chances of me ever getting to them all is pretty slim.
+
+add_namespace = byznames
+
+news_event = {
+	id = byznames.0
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		GRE = { owns_state = 182 }
+	}
+
+	immediate = {
+		182 = { set_state_name = "Krete" }
+	}
+	
+	option = {
+		name = byznames.0.a
+	}
+}
+
+news_event = {
+	id = byznames.1
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		GRE = { owns_state = 212 }
+	}
+
+	immediate = {
+		212 = { set_state_name = "Tarnovo" }
+	}
+	
+	option = {
+		name = byznames.1.a
+	}
+}
+
+news_event = {
+	id = byznames.2
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		GRE = { owns_state = 77 }
+	}
+
+	immediate = {
+		77 = { set_state_name = "Selestria" }
+	}
+	
+	option = {
+		name = byznames.2.a
+	}
+}
+
+news_event = {
+	id = byznames.3
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		GRE = { owns_state = 44 }
+	}
+
+	immediate = {
+		44 = { set_state_name = "Dyrrhachium" }
+	}
+	
+	option = {
+		name = byznames.3.a
+	}
+}
+
+news_event = {
+	id = byznames.4
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		GRE = { owns_state = 105 }
+	}
+
+	immediate = {
+		105 = { set_state_name = "Zeta" }
+	}
+	
+	option = {
+		name = byznames.4.a
+	}
+}
+
+news_event = {
+	id = byznames.5
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		GRE = { owns_state = 356 }
+	}
+
+	immediate = {
+		356 = { set_state_name = "Paphlagonia" }
+	}
+	
+	option = {
+		name = byznames.5.a
+	}
+}
+
+news_event = {
+	id = byznames.6
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		GRE = { owns_state = 343 }
+	}
+
+	immediate = {
+		343 = { set_state_name = "Kotyaion" }
+	}
+	
+	option = {
+		name = byznames.6.a
+	}
+}

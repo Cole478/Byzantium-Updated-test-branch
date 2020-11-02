@@ -1,0 +1,33 @@
+#################
+### BYZANTIUM ###
+#################
+
+the_byz_category = {
+
+	icon = generic_formable_nations
+
+	picture = GFX_decision_cat_the_byz
+
+	allowed = {
+		original_tag = GRE
+	}
+
+	visible = {
+
+	}
+}
+
+varangian_category = {
+	
+	icon = decision_category_military_operation
+
+	picture = GFX_decision_cat_varangian
+	
+	allowed = {
+		original_tag = GRE
+	}
+
+	visible = {
+		has_completed_focus = BYZ_varangian_guard
+	}
+}

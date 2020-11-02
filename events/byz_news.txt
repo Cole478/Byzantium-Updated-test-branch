@@ -1,0 +1,1546 @@
+﻿# BYZANTINE NEWS
+
+add_namespace = byznews
+
+# Welcome to Byzantium
+news_event = {
+	id = byznews.0
+	title = byznews.0.t
+	desc = byznews.0.d
+
+	picture = GFX_news_event_byz0
+	
+	major = yes
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	immediate = {
+		set_global_flag = byz_mod_intro
+	}
+	
+	option = {
+		name = byznews.0.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.0.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Territorial Claims Not Pressed
+news_event = {
+	id = byznews.1
+	title = byznews.1.t
+	desc = byznews.1.d
+
+	picture = GFX_news_event_byz1
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byznews.1.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.1.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Territory Surrendered
+news_event = {
+	id = byznews.2
+	title = byznews.2.t
+	desc = byznews.2.d
+
+	picture = GFX_news_event_byz2
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byznews.2.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.2.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Bulgaria No More
+news_event = {
+	id = byznews.3
+	title = byznews.3.t
+	desc = byznews.3.d
+
+	picture = GFX_news_event_byz3
+
+	fire_only_once = yes
+
+	major = yes
+
+	trigger = {
+		original_tag = GRE
+		has_global_flag = byz_bul_annex
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = byznews.3.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.3.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Justinians Dream
+news_event = {
+	id = byznews.4
+	title = byznews.4.t
+	desc = byznews.4.d
+
+	picture = GFX_news_event_byz4
+
+	is_triggered_only = yes
+
+	major = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = byznews.4.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.4.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# New Romans
+news_event = {
+	id = byznews.7
+	title = byznews.7.t
+	desc = byznews.7.d
+
+	picture = GFX_news_event_byz7
+
+	is_triggered_only = yes
+
+	major = yes
+	
+	option = {
+		name = byznews.7.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.7.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Constantinople Falls
+news_event = {
+	id = byznews.8
+	title = byznews.8.t
+	desc = byznews.8.d
+
+	picture = GFX_news_event_byz8
+
+	fire_only_once = yes
+	
+	major = yes
+	
+	trigger = {
+		341 = { is_owned_by = GRE }
+		NOT = {
+			341 = { is_controlled_by = GRE }
+			has_global_flag = constant_falls
+		}
+		GRE = { has_war = yes }
+	}
+	
+	immediate = {
+		set_global_flag = constant_falls
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = byznews.8.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.8.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Constantinople Liberated
+news_event = {
+	id = byznews.9
+	title = byznews.9.t
+	desc = byznews.9.d
+
+	picture = GFX_news_event_byz9
+
+	fire_only_once = yes
+	
+	major = yes
+	
+	trigger = {
+		341 = { is_owned_by = GRE }
+		341 = { is_controlled_by = GRE }
+		has_global_flag = constant_falls
+		GRE = { has_war = yes }
+	}
+	
+	immediate = {
+		clr_global_flag = constant_falls
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = byznews.9.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.9.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Athens Falls
+news_event = {
+	id = byznews.10
+	title = byznews.10.t
+	desc = byznews.10.d
+
+	picture = GFX_news_event_byz10
+
+	fire_only_once = yes
+	
+	major = yes
+	
+	trigger = {
+		47 = { is_owned_by = GRE }
+		NOT = {
+			47 = { is_controlled_by = GRE }
+			has_global_flag = athens_falls
+		}
+		GRE = { has_war = yes }
+	}
+	
+	immediate = {
+		set_global_flag = athens_falls
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = byznews.10.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.10.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Athens Liberated
+news_event = {
+	id = byznews.11
+	title = byznews.11.t
+	desc = byznews.11.d
+
+	picture = GFX_news_event_byz11
+
+	fire_only_once = yes
+
+	major = yes
+	
+	trigger = {
+		47 = { is_owned_by = GRE }
+		47 = { is_controlled_by = GRE }
+		has_global_flag = athens_falls
+		GRE = { has_war = yes }
+	}
+	
+	immediate = {
+		clr_global_flag = athens_falls
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = byznews.11.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.11.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# 29 May 1453
+news_event = {
+	id = byznews.12
+	title = byznews.12.t
+	desc = byznews.12.d
+
+	picture = GFX_news_event_byz59
+
+	major = no
+
+	fire_only_once = yes
+
+	trigger = {
+		date > 1936.5.25
+		date < 1936.6.05
+		NOT = { has_global_flag = byz_may29th }
+		country_exists = GRE
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		hidden_effect = {
+			news_event = { days = 365 id = byznews.13 }
+			news_event = { days = 730 id = byznews.13 }
+			news_event = { days = 1095 id = byznews.13 }
+			news_event = { days = 1460 id = byznews.13 }
+			news_event = { days = 1825 id = byznews.13 }
+			news_event = { days = 2190 id = byznews.13 }
+			news_event = { days = 2555 id = byznews.13 }
+			news_event = { days = 2920 id = byznews.13 }
+			news_event = { days = 3285 id = byznews.13 }
+			news_event = { days = 3650 id = byznews.13 }
+		}
+		set_global_flag = byz_may29th
+	}
+
+	option = {
+		name = byznews.12.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+}
+
+# 29 May 1453
+news_event = {
+	id = byznews.13
+	title = byznews.12.t
+	desc = byznews.12.d
+
+	picture = GFX_news_event_byz59
+
+	major = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = byznews.12.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+}
+
+# George II Exiled
+news_event = {
+ 	id = byznews.27
+ 	title = byznews.27.t
+ 	desc = byznews.27.d
+
+ 	picture = GFX_news_event_byz27
+
+ 	fire_only_once = yes
+	
+ 	major = yes
+	
+ 	trigger = {
+ 		original_tag = GRE
+		has_idea = BYZ_george_ii
+		has_government = communism
+ 	}
+	
+ 	immediate = {
+ 		hidden_effect = {
+ 			remove_ideas = BYZ_george_ii
+ 		}
+ 	}
+	
+ 	mean_time_to_happen = {
+ 		days = 0
+ 	}
+	
+ 	option = {
+ 		name = byznews.27.a
+ 		trigger = {
+ 			original_tag = GRE
+ 		}
+ 	}
+ 	option = {
+ 		name = byznews.27.b
+ 		trigger = {
+ 			NOT = { original_tag = GRE }
+ 		}
+ 	}
+}
+
+# George II Returns
+news_event = {
+ 	id = byznews.28
+ 	title = byznews.28.t
+ 	desc = byznews.28.d
+
+ 	picture = GFX_news_event_byz28
+
+ 	fire_only_once = yes
+	
+ 	major = yes
+	
+ 	trigger = {
+ 		original_tag = GRE
+		GRE = { 
+			NOT = { 
+				has_idea = BYZ_george_ii
+				OR= { 
+					has_government = communism
+					has_completed_focus = BYZ_new_constitution
+					has_completed_focus = BYZ_byzantine_renaissance
+				}
+			}
+		}
+ 	}
+	
+ 	immediate = {
+ 		hidden_effect = {
+ 			add_ideas = BYZ_george_ii
+ 		}
+ 	}
+	
+ 	mean_time_to_happen = {
+ 		days = 0
+ 	}
+	
+ 	option = {
+ 		name = byznews.28.a
+ 		trigger = {
+ 			original_tag = GRE
+ 		}
+ 	}
+ 	option = {
+ 		name = byznews.28.b
+ 		trigger = {
+ 			NOT = { original_tag = GRE }
+ 		}
+ 	}
+}
+
+# Smyrna Collapses
+news_event = {
+	id = byznews.29
+	title = byznews.29.t
+	desc = byznews.29.d
+
+	picture = GFX_news_event_byz29
+	
+	major = yes
+	
+	trigger = {
+		339 = { is_controlled_by = TUR }
+		339 = { is_owned_by = GRE }
+		GRE = { has_war_with = TUR }
+		NOT = { has_global_flag = smyrna_collapses }
+	}
+	
+	immediate = {
+		set_global_flag = smyrna_collapses
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = byznews.29.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.29.b
+		trigger = { 
+			original_tag = TUR
+		}
+	}
+	option = {
+		name = byznews.29.c
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = GRE
+					original_tag = TUR
+				}
+			}
+		}
+	}
+}
+
+# Ankara Falls
+news_event = {
+	id = byznews.30
+	title = byznews.30.t
+	desc = byznews.30.d
+
+	picture = GFX_news_event_byz30
+	
+	major = yes
+	
+	trigger = {
+		49 = { is_controlled_by = GRE }
+		49 = { is_owned_by = TUR }
+		GRE = { has_war_with = TUR }
+		NOT = { has_global_flag = fall_ankara }
+	}
+	
+	immediate = {
+		set_global_flag = fall_ankara
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = byznews.30.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.30.b
+		trigger = { 
+			original_tag = TUR
+		}
+	}
+	option = {
+		name = byznews.30.c
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = GRE
+					original_tag = TUR
+				}
+			}
+		}
+	}
+}
+
+# Konya Captured
+news_event = {
+	id = byznews.31
+	title = byznews.31.t
+	desc = byznews.31.d
+
+	picture = GFX_news_event_byz31
+	
+	major = yes
+	
+	trigger = {
+		346 = { is_controlled_by = GRE }
+		346 = { is_owned_by = TUR }
+		GRE = { has_war_with = TUR }
+		NOT = { has_global_flag = fall_konya }
+	}
+	
+	immediate = {
+		set_global_flag = fall_konya
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = byznews.31.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.31.b
+		trigger = { 
+			original_tag = TUR
+		}
+	}
+	option = {
+		name = byznews.31.c
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = GRE
+					original_tag = TUR
+				}
+			}
+		}
+	}
+}
+
+# Rome Restored
+news_event = {
+	id = byznews.32
+	title = byznews.32.t
+	desc = byznews.32.d
+
+	picture = GFX_news_event_byz32
+	
+	major = yes
+	
+	trigger = {
+		2 = { is_controlled_by = GRE }
+		NOT = { 2 = { is_owned_by = GRE } }
+		GRE = { has_war = yes }
+		NOT = { has_global_flag = fall_rome }
+	}
+	
+	immediate = {
+		set_global_flag = fall_rome
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = byznews.32.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.32.b
+		trigger = { 
+			original_tag = ITA
+		}
+	}
+	option = {
+		name = byznews.32.c
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = GRE
+					original_tag = TUR
+				}
+			}
+		}
+	}
+}
+
+# Ruins of Antioch
+news_event = {
+	id = byznews.33
+	title = byznews.33.t
+	desc = byznews.33.d
+
+	picture = GFX_news_event_byz33
+	
+	major = yes
+	
+	trigger = {
+		677 = { is_controlled_by = GRE }
+		NOT = { 677 = { is_owned_by = GRE } }
+		NOT = { has_global_flag = antioch_ruins }
+	}
+	
+	immediate = {
+		set_global_flag = antioch_ruins
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = byznews.33.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.33.b
+		trigger = { 
+			NOT = { original_tag = GRE }
+		}
+	}
+}
+
+# Jerusalem Taken
+news_event = {
+	id = byznews.34
+	title = byznews.34.t
+	desc = byznews.34.d
+
+	picture = GFX_news_event_byz34
+	
+	major = yes
+	
+	trigger = {
+		454 = { is_controlled_by = GRE }
+		NOT = { 454 = { is_owned_by = GRE } }
+		NOT = { has_global_flag = byz_jerusalem }
+	}
+	
+	immediate = {
+		set_global_flag = byz_jerusalem
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = byznews.34.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.34.b
+		trigger = { 
+			NOT = { original_tag = GRE }
+		}
+	}
+}
+
+# Hagia Sophia Restored
+news_event = {
+	id = byznews.35
+	title = byznews.35.t
+	desc = byznews.35.d
+
+	picture = GFX_news_event_byz35
+	
+	major = yes
+	
+	trigger = {
+		date > 1938.1.1
+		341 = { is_controlled_by = GRE }
+		NOT = { has_global_flag = byz_hagia_sophia }
+	}
+	
+	immediate = {
+		set_global_flag = byz_hagia_sophia
+	}
+	
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	option = {
+		name = byznews.35.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.35.b
+		trigger = { 
+			NOT = { original_tag = GRE }
+		}
+	}
+}
+
+# The Three Romes
+news_event = {
+	id = byznews.36
+	title = byznews.36.t
+	desc = byznews.36.d
+
+	picture = GFX_news_event_byz36
+	
+	major = yes
+	
+	trigger = {
+		original_tag = GRE
+		has_global_flag = byz_mod_intro
+		NOT = { has_global_flag = byz_ita_rus }
+	}
+	
+	immediate = {
+		set_global_flag = byz_ita_rus
+		hidden_effect = {
+			ITA = {
+				add_opinion_modifier = { target = GRE modifier = byz_rivalry }
+			}
+			SOV = {
+				add_opinion_modifier = { target = GRE modifier = byz_rivalry }
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+	
+	option = {
+		name = byznews.36.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.36.b
+		trigger = {
+			OR = {
+				original_tag = ITA
+				original_tag = SOV
+			}
+		}
+	}
+	option = {
+		name = byznews.36.c
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = GRE
+					original_tag = ITA
+					original_tag = SOV
+				}
+			}
+		}
+	}
+}
+
+# Anatolian Atrocities
+news_event = {
+	id = byznews.37
+	title = byznews.37.t
+	desc = byznews.37.d
+
+	picture = GFX_news_event_byz37
+	
+	major = yes
+	
+	trigger = {
+		OR = {
+			has_global_flag = fall_konya
+			has_global_flag = fall_ankara
+			has_global_flag = smyrna_collapses
+		}
+		GRE = { has_war_with = TUR }
+		NOT = { has_global_flag = ana_atroc }
+	}
+	
+	immediate = {
+		set_global_flag = ana_atroc
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	option = {
+		name = byznews.37.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.37.b
+		trigger = { 
+			original_tag = TUR
+		}
+	}
+	option = {
+		name = byznews.37.c
+		trigger = {
+			NOT = {
+				OR = {
+					original_tag = GRE
+					original_tag = TUR
+				}
+			}
+		}
+	}
+}
+
+# Occupation Ends
+news_event = {
+	id = byznews.39
+	title = byznews.39.t
+	desc = byznews.39.d
+
+	picture = GFX_news_event_byz2
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byznews.39.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.39.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# British Aid
+news_event = {
+	id = byznews.40
+	title = byznews.40.t
+	desc = byznews.40.d
+
+	picture = GFX_news_event_020
+	
+	major = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byznews.40.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.40.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# German Aid
+news_event = {
+	id = byznews.41
+	title = byznews.41.t
+	desc = byznews.41.d
+
+	picture = GFX_news_event_020
+	
+	major = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byznews.41.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.41.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Russian Aid
+news_event = {
+	id = byznews.42
+	title = byznews.42.t
+	desc = byznews.42.d
+
+	picture = GFX_news_event_020
+	
+	major = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byznews.42.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.42.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# British Carrier
+news_event = {
+	id = byznews.43
+	title = byznews.43.t
+	desc = byznews.43.d
+
+	picture = GFX_news_event_byz40
+	
+	major = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byznews.43.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.43.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# German Submarines
+news_event = {
+	id = byznews.44
+	title = byznews.44.t
+	desc = byznews.44.d
+
+	picture = GFX_news_event_byz41
+	
+	major = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byznews.44.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.44.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Russian Battleship
+news_event = {
+	id = byznews.45
+	title = byznews.45.t
+	desc = byznews.45.d
+
+	picture = GFX_news_event_byz42
+	
+	major = no
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = byznews.45.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.45.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Venizelism
+
+news_event = {
+	id = byznews.46
+	title = byznews.46.t
+	desc = byznews.46.d
+
+	picture = GFX_news_event_byz46
+
+	major = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = byznews.46.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.46.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Moscow Mission
+
+news_event = {
+	id = byznews.47
+	title = byznews.47.t
+	desc = byznews.47.d
+
+	picture = GFX_news_event_byz47
+	
+	major = no
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byznews.47.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.47.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Paris Mission
+
+news_event = {
+	id = byznews.48
+	title = byznews.48.t
+	desc = byznews.48.d
+
+	picture = GFX_news_event_byz48
+	
+	major = no
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byznews.48.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.48.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Stand Byzantium
+
+news_event = {
+	id = byznews.49
+	title = byznews.49.t
+	desc = byznews.49.d
+
+	picture = GFX_news_event_byz49
+	
+	major = no
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byznews.49.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.49.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Berlin Mission
+
+news_event = {
+	id = byznews.50
+	title = byznews.50.t
+	desc = byznews.50.d
+
+	picture = GFX_news_event_byz50
+	
+	major = no
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byznews.50.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.50.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Albania No More
+
+news_event = {
+	id = byznews.51
+	title = byznews.51.t
+	desc = byznews.51.d
+
+	picture = GFX_news_event_byz51
+
+	fire_only_once = yes
+
+	major = yes
+
+	trigger = {
+		original_tag = GRE
+		has_global_flag = byz_alb_annex
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = byznews.51.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.51.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Politik
+
+news_event = {
+	id = byznews.52
+	title = byznews.52.t
+	desc = byznews.52.d
+
+	picture = GFX_news_event_byz52
+	
+	major = no
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byznews.52.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.52.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# George II Country Leader
+
+news_event = {
+	id = byznews.53
+	title = byznews.53.t
+	desc = byznews.53.d
+
+	picture = GFX_news_event_byz53
+	
+	major = no
+	
+	is_triggered_only = yes
+
+	option = {
+		name = byznews.53.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.53.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# New Tank
+
+news_event = {
+	id = byznews.54
+	title = byznews.54.t
+	desc = byznews.54.d
+
+	picture = GFX_news_event_byz54
+
+	fire_only_once = yes
+
+	major = no
+
+	trigger = {
+		original_tag = GRE
+		date < 1939.1.1
+		has_tech = improved_light_tank
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = byznews.54.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.54.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# New Fighter
+
+news_event = {
+	id = byznews.55
+	title = byznews.55.t
+	desc = byznews.55.d
+
+	picture = GFX_news_event_byz55
+
+	fire_only_once = yes
+
+	major = no
+
+	trigger = {
+		original_tag = GRE
+		date < 1939.1.1
+		has_tech = fighter1
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = byznews.55.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.55.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Dispersed Industry
+
+news_event = {
+	id = byznews.56
+	title = byznews.56.t
+	desc = byznews.56.d
+
+	picture = GFX_news_event_byz56
+
+	fire_only_once = yes
+
+	major = no
+
+	trigger = {
+		original_tag = GRE
+		date < 1939.1.1
+		has_tech = dispersed_industry
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = byznews.56.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.56.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}
+
+# Concentrated Industry
+
+news_event = {
+	id = byznews.57
+	title = byznews.57.t
+	desc = byznews.57.d
+
+	picture = GFX_news_event_byz57
+
+	fire_only_once = yes
+
+	major = no
+
+	trigger = {
+		original_tag = GRE
+		date < 1939.1.1
+		has_tech = concentrated_industry
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = byznews.57.a
+		trigger = {
+			original_tag = GRE
+		}
+	}
+	option = {
+		name = byznews.57.b
+		trigger = {
+			NOT = {
+				original_tag = GRE
+			}
+		}
+	}
+}

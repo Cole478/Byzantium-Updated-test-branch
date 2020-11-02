@@ -1,0 +1,1682 @@
+﻿#######################
+#### Turkey Events ####
+#######################
+
+add_namespace = turkey
+
+# President dies
+country_event = {
+	id = turkey.1
+	title = turkey.1.t
+	desc = turkey.1.d
+	picture = GFX_report_event_generic_funeral
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = TUR
+		has_government = neutrality
+		date > 1938.11.1
+		has_start_date < 1936.01.02
+	}
+
+	mean_time_to_happen = {
+		days = 30
+		modifier = {
+			factor = 0.5
+			date > 1938.12.1
+		}
+		modifier = {
+			factor = 0.2
+			date > 1939.1.1
+		}
+	}
+
+	option = {
+		name = turkey.1.a
+		kill_country_leader = yes
+	}
+}
+
+### DEMAND ANATOLIA
+
+country_event = { # Decide whether or not to send demand to whoever owns listed states
+	id = turkey.101
+	title = turkey.101.t
+	desc = turkey.101.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = turkey.101.a # Send demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 339
+						owns_state = 340
+						owns_state = 347
+					}
+					strength_ratio = {
+						tag = TUR ratio > 1.5 # more than 150% the strength of Turkey
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = GRE
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 339
+					owns_state = 340
+					owns_state = 347
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = TUR
+							is_in_faction_with = TUR
+							is_puppet_of = TUR
+						}
+					}
+				}
+			}
+			country_event = { id = turkey.102 days = 1 }
+		}
+	}
+	
+	option = {
+		name = turkey.101.b # Don't send demand
+		ai_chance = {
+			factor = 10
+		}
+		news_event = { id = turnews.1 days = 1 } # Territorial Claims Not Pressed news event
+	}
+}
+
+country_event = { # Country owning state decides whether or not to accept demand
+	id = turkey.102
+	title = turkey.102.t
+	desc = turkey.102.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Refuse
+		name = turkey.102.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		effect_tooltip = {
+			TUR = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			TUR = {
+				country_event = { id = turkey.103 days = 1 }
+			}
+		}
+	}
+	option = { # Accept
+		name = turkey.102.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = TUR
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		TUR = { transfer_state = 339 }
+		TUR = { transfer_state = 340 }
+		TUR = { transfer_state = 347 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			TUR = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = turnews.2 days = 1 } # Territory Surrendered news event
+	}
+}
+
+country_event = { # Creates wargoal
+	id = turkey.103
+	title = turkey.103.t
+	desc = turkey.103.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = turkey.103.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 339 340 347 }
+		}
+	}
+}
+
+### DEMAND CAUCASUS
+
+country_event = { # Decide whether or not to send demand to whoever owns listed states
+	id = turkey.104
+	title = turkey.104.t
+	desc = turkey.104.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = turkey.101.a # Send demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 229
+						owns_state = 230
+						owns_state = 231
+						owns_state = 233
+					}
+					strength_ratio = {
+						tag = TUR ratio > 1.5 # more than 150% the strength of Turkey
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = SOV
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 229
+					owns_state = 230
+					owns_state = 231
+					owns_state = 233
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = TUR
+							is_in_faction_with = TUR
+							is_puppet_of = TUR
+						}
+					}
+				}
+			}
+			country_event = { id = turkey.102 days = 1 }
+		}
+	}
+	
+	option = {
+		name = turkey.101.b # Don't send demand
+		ai_chance = {
+			factor = 10
+		}
+		news_event = { id = turnews.1 days = 1 } # Territorial Claims Not Pressed news event
+	}
+}
+
+country_event = { # Country owning state decides whether or not to accept demand
+	id = turkey.105
+	title = turkey.105.t
+	desc = turkey.105.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Refuse
+		name = turkey.102.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		effect_tooltip = {
+			TUR = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			TUR = {
+				country_event = { id = turkey.103 days = 1 }
+			}
+		}
+	}
+	option = { # Accept
+		name = turkey.102.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = TUR
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		TUR = { transfer_state = 229 }
+		TUR = { transfer_state = 230 }
+		TUR = { transfer_state = 231 }
+		TUR = { transfer_state = 233 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			TUR = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = turnews.2 days = 1 } # Territory Surrendered news event
+	}
+}
+
+country_event = { # Creates wargoal
+	id = turkey.106
+	title = turkey.106.t
+	desc = turkey.106.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = turkey.103.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 229 230 231 233 }
+		}
+	}
+}
+
+### DEMAND RHODES
+
+country_event = { # Decide whether or not to send demand to whoever owns listed states
+	id = turkey.107
+	title = turkey.107.t
+	desc = turkey.107.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = turkey.101.a # Send demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 164
+					}
+					strength_ratio = {
+						tag = TUR ratio > 1.5 # more than 150% the strength of Turkey
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = ITA
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 164
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = TUR
+							is_in_faction_with = TUR
+							is_puppet_of = TUR
+						}
+					}
+				}
+			}
+			country_event = { id = turkey.102 days = 1 }
+		}
+	}
+	
+	option = {
+		name = turkey.101.b # Don't send demand
+		ai_chance = {
+			factor = 10
+		}
+		news_event = { id = turnews.1 days = 1 } # Territorial Claims Not Pressed news event
+	}
+}
+
+country_event = { # Country owning state decides whether or not to accept demand
+	id = turkey.108
+	title = turkey.108.t
+	desc = turkey.108.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Refuse
+		name = turkey.102.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		effect_tooltip = {
+			TUR = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			TUR = {
+				country_event = { id = turkey.103 days = 1 }
+			}
+		}
+	}
+	option = { # Accept
+		name = turkey.102.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = TUR
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		TUR = { transfer_state = 164 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			TUR = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = turnews.2 days = 1 } # Territory Surrendered news event
+	}
+}
+
+country_event = { # Creates wargoal
+	id = turkey.109
+	title = turkey.109.t
+	desc = turkey.109.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = turkey.103.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 164 }
+		}
+	}
+}
+
+### DEMAND THRACE
+
+country_event = { # Decide whether or not to send demand to whoever owns listed states
+	id = turkey.110
+	title = turkey.110.t
+	desc = turkey.110.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = turkey.101.a # Send demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 184
+						owns_state = 341
+						owns_state = 731
+					}
+					strength_ratio = {
+						tag = TUR ratio > 1.5 # more than 150% the strength of Turkey
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = GRE
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 184
+					owns_state = 341
+					owns_state = 731
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = TUR
+							is_in_faction_with = TUR
+							is_puppet_of = TUR
+						}
+					}
+				}
+			}
+			country_event = { id = turkey.102 days = 1 }
+		}
+	}
+	
+	option = {
+		name = turkey.101.b # Don't send demand
+		ai_chance = {
+			factor = 10
+		}
+		news_event = { id = turnews.1 days = 1 } # Territorial Claims Not Pressed news event
+	}
+}
+
+country_event = { # Country owning state decides whether or not to accept demand
+	id = turkey.111
+	title = turkey.111.t
+	desc = turkey.111.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Refuse
+		name = turkey.102.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		effect_tooltip = {
+			TUR = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			TUR = {
+				country_event = { id = turkey.103 days = 1 }
+			}
+		}
+	}
+	option = { # Accept
+		name = turkey.102.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = TUR
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		TUR = { transfer_state = 184 }
+		TUR = { transfer_state = 341 }
+		TUR = { transfer_state = 731 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			TUR = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = turnews.2 days = 1 } # Territory Surrendered news event
+	}
+}
+
+country_event = { # Creates wargoal
+	id = turkey.112
+	title = turkey.112.t
+	desc = turkey.112.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = turkey.103.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 184 341 731 }
+		}
+	}
+}
+
+### DEMAND TIBRIZ
+
+country_event = { # Decide whether or not to send demand to whoever owns listed states
+	id = turkey.113
+	title = turkey.113.t
+	desc = turkey.113.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = turkey.101.a # Send demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 419
+					}
+					strength_ratio = {
+						tag = TUR ratio > 1.5 # more than 150% the strength of Turkey
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = PER
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 419
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = TUR
+							is_in_faction_with = TUR
+							is_puppet_of = TUR
+						}
+					}
+				}
+			}
+			country_event = { id = turkey.102 days = 1 }
+		}
+	}
+	
+	option = {
+		name = turkey.101.b # Don't send demand
+		ai_chance = {
+			factor = 10
+		}
+		news_event = { id = turnews.1 days = 1 } # Territorial Claims Not Pressed news event
+	}
+}
+
+country_event = { # Country owning state decides whether or not to accept demand
+	id = turkey.114
+	title = turkey.114.t
+	desc = turkey.114.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Refuse
+		name = turkey.102.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		effect_tooltip = {
+			TUR = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			TUR = {
+				country_event = { id = turkey.103 days = 1 }
+			}
+		}
+	}
+	option = { # Accept
+		name = turkey.102.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = TUR
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		TUR = { transfer_state = 419 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			TUR = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = turnews.2 days = 1 } # Territory Surrendered news event
+	}
+}
+
+country_event = { # Creates wargoal
+	id = turkey.115
+	title = turkey.115.t
+	desc = turkey.115.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = turkey.103.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 419 }
+		}
+	}
+}
+
+### DEMAND CYPRUS
+
+country_event = { # Decide whether or not to send demand to whoever owns listed states
+	id = turkey.116
+	title = turkey.116.t
+	desc = turkey.116.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = turkey.101.a # Send demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 183
+					}
+					strength_ratio = {
+						tag = TUR ratio > 1.5 # more than 150% the strength of Turkey
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = ENG
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 183
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = TUR
+							is_in_faction_with = TUR
+							is_puppet_of = TUR
+						}
+					}
+				}
+			}
+			country_event = { id = turkey.102 days = 1 }
+		}
+	}
+	
+	option = {
+		name = turkey.101.b # Don't send demand
+		ai_chance = {
+			factor = 10
+		}
+		news_event = { id = turnews.1 days = 1 } # Territorial Claims Not Pressed news event
+	}
+}
+
+country_event = { # Country owning state decides whether or not to accept demand
+	id = turkey.117
+	title = turkey.117.t
+	desc = turkey.117.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Refuse
+		name = turkey.102.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		effect_tooltip = {
+			TUR = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			TUR = {
+				country_event = { id = turkey.103 days = 1 }
+			}
+		}
+	}
+	option = { # Accept
+		name = turkey.102.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = TUR
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		TUR = { transfer_state = 183 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			TUR = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = turnews.2 days = 1 } # Territory Surrendered news event
+	}
+}
+
+country_event = { # Creates wargoal
+	id = turkey.118
+	title = turkey.118.t
+	desc = turkey.118.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = turkey.103.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 183 }
+		}
+	}
+}
+
+### DEMAND BURGAS
+
+country_event = { # Decide whether or not to send demand to whoever owns listed states
+	id = turkey.119
+	title = turkey.119.t
+	desc = turkey.119.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = turkey.101.a # Send demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 48
+						owns_state = 211
+						owns_state = 212
+					}
+					strength_ratio = {
+						tag = TUR ratio > 1.5 # more than 150% the strength of Turkey
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = BUL
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 48
+					owns_state = 211
+					owns_state = 212
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = TUR
+							is_in_faction_with = TUR
+							is_puppet_of = TUR
+						}
+					}
+				}
+			}
+			country_event = { id = turkey.102 days = 1 }
+		}
+	}
+	
+	option = {
+		name = turkey.101.b # Don't send demand
+		ai_chance = {
+			factor = 10
+		}
+		news_event = { id = turnews.1 days = 1 } # Territorial Claims Not Pressed news event
+	}
+}
+
+country_event = { # Country owning state decides whether or not to accept demand
+	id = turkey.120
+	title = turkey.120.t
+	desc = turkey.120.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Refuse
+		name = turkey.102.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		effect_tooltip = {
+			TUR = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			TUR = {
+				country_event = { id = turkey.103 days = 1 }
+			}
+		}
+	}
+	option = { # Accept
+		name = turkey.102.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = TUR
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		TUR = { transfer_state = 48 }
+		TUR = { transfer_state = 211 }
+		TUR = { transfer_state = 212 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			TUR = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = turnews.2 days = 1 } # Territory Surrendered news event
+	}
+}
+
+country_event = { # Creates wargoal
+	id = turkey.121
+	title = turkey.121.t
+	desc = turkey.121.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = turkey.103.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 211 }
+		}
+	}
+}
+
+### DEMAND MOSUL
+
+country_event = { # Decide whether or not to send demand to whoever owns listed states
+	id = turkey.122
+	title = turkey.122.t
+	desc = turkey.122.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = turkey.101.a # Send demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 676
+					}
+					strength_ratio = {
+						tag = TUR ratio > 1.5 # more than 150% the strength of Turkey
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = IRQ
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 676
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = TUR
+							is_in_faction_with = TUR
+							is_puppet_of = TUR
+						}
+					}
+				}
+			}
+			country_event = { id = turkey.102 days = 1 }
+		}
+	}
+	
+	option = {
+		name = turkey.101.b # Don't send demand
+		ai_chance = {
+			factor = 10
+		}
+		news_event = { id = turnews.1 days = 1 } # Territorial Claims Not Pressed news event
+	}
+}
+
+country_event = { # Country owning state decides whether or not to accept demand
+	id = turkey.123
+	title = turkey.123.t
+	desc = turkey.123.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Refuse
+		name = turkey.102.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		effect_tooltip = {
+			TUR = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			TUR = {
+				country_event = { id = turkey.103 days = 1 }
+			}
+		}
+	}
+	option = { # Accept
+		name = turkey.102.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = TUR
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		TUR = { transfer_state = 676 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			TUR = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = turnews.2 days = 1 } # Territory Surrendered news event
+	}
+}
+
+country_event = { # Creates wargoal
+	id = turkey.124
+	title = turkey.124.t
+	desc = turkey.124.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = turkey.103.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 676 }
+		}
+	}
+}
+
+### DEMAND MACEDONIA
+
+country_event = { # Decide whether or not to send demand to whoever owns listed states
+	id = turkey.125
+	title = turkey.125.t
+	desc = turkey.125.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = turkey.101.a # Send demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 106
+					}
+					strength_ratio = {
+						tag = TUR ratio > 1.5 # more than 150% the strength of Turkey
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = YUG
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 106
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = TUR
+							is_in_faction_with = TUR
+							is_puppet_of = TUR
+						}
+					}
+				}
+			}
+			country_event = { id = turkey.102 days = 1 }
+		}
+	}
+	
+	option = {
+		name = turkey.101.b # Don't send demand
+		ai_chance = {
+			factor = 10
+		}
+		news_event = { id = turnews.1 days = 1 } # Territorial Claims Not Pressed news event
+	}
+}
+
+country_event = { # Country owning state decides whether or not to accept demand
+	id = turkey.126
+	title = turkey.126.t
+	desc = turkey.126.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Refuse
+		name = turkey.102.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		effect_tooltip = {
+			TUR = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			TUR = {
+				country_event = { id = turkey.103 days = 1 }
+			}
+		}
+	}
+	option = { # Accept
+		name = turkey.102.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = TUR
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		TUR = { transfer_state = 106 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			TUR = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = turnews.2 days = 1 } # Territory Surrendered news event
+	}
+}
+
+country_event = { # Creates wargoal
+	id = turkey.127
+	title = turkey.127.t
+	desc = turkey.127.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = turkey.103.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 106 }
+		}
+	}
+}
+
+### DEMAND ALEPPO
+
+country_event = { # Decide whether or not to send demand to whoever owns listed states
+	id = turkey.128
+	title = turkey.128.t
+	desc = turkey.128.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = turkey.101.a # Send demand
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0
+				any_country {
+					OR = {
+						owns_state = 677
+					}
+					strength_ratio = {
+						tag = TUR ratio > 1.5 # more than 150% the strength of Turkey
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_major = yes
+					has_guaranteed = SYR
+				}
+			}
+		}
+		every_country {
+			limit = {
+				OR = {
+					owns_state = 677
+				}
+				AND = {
+					NOT = {
+						OR = {
+							tag = TUR
+							is_in_faction_with = TUR
+							is_puppet_of = TUR
+						}
+					}
+				}
+			}
+			country_event = { id = turkey.102 days = 1 }
+		}
+	}
+	
+	option = {
+		name = turkey.101.b # Don't send demand
+		ai_chance = {
+			factor = 10
+		}
+		news_event = { id = turnews.1 days = 1 } # Territorial Claims Not Pressed news event
+	}
+}
+
+country_event = { # Country owning state decides whether or not to accept demand
+	id = turkey.129
+	title = turkey.129.t
+	desc = turkey.129.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = { # Refuse
+		name = turkey.102.a
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0.5
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 0.1
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		effect_tooltip = {
+			TUR = {
+				create_wargoal = {
+					type = take_core_state
+					target = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			TUR = {
+				country_event = { id = turkey.103 days = 1 }
+			}
+		}
+	}
+	option = { # Accept
+		name = turkey.102.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war_with = TUR
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = { tag = TUR ratio < 0.5 } #less than half the strength of Turkey
+			}
+			modifier = {
+				factor = 4
+				strength_ratio = { tag = TUR ratio < 0.25 } #less than 1/4 the strength of Turkey
+			}
+			modifier = {
+				factor = 6
+				strength_ratio = { tag = TUR ratio < 0.1 } #less than 10% the strength of Turkey
+			}
+		}
+		TUR = { transfer_state = 677 }
+		if = {
+			limit = {
+				NOT = {
+					any_state = {
+                    is_controlled_by = ROOT
+					}
+				}
+			}
+			TUR = {
+				annex_country = { 
+					target = ROOT transfer_troops = yes
+				}
+			}
+		}
+		news_event = { id = turnews.2 days = 1 } # Territory Surrendered news event
+	}
+}
+
+country_event = { # Creates wargoal
+	id = turkey.130
+	title = turkey.130.t
+	desc = turkey.130.d
+	picture = GFX_report_event_polish_tanks_01
+
+	is_triggered_only = yes
+	
+	option = {
+		name = turkey.103.a
+		create_wargoal = {
+			type = take_core_state
+			target = FROM
+			generator = { 677 }
+		}
+	}
+}
+
+# France asked to release Syria
+
+country_event = {
+	id = turkey.133
+	title = turkey.133.t
+	desc = turkey.133.d
+	picture = GFX_report_event_second_vienna_award_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = turkey.133.a # Accept
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+		release = SYR
+		TUR = { news_event = turnews.5 }
+	}
+	
+	option = {
+		name = turkey.133.b # Refuse
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
+		TUR = { news_event = turnews.6 }
+	}
+}
