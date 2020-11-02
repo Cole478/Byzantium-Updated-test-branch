@@ -1,0 +1,48 @@
+﻿
+units= {
+
+	##### NAVAL UNITS #####
+	fleet = {
+		name = "Vasilikó Polemikó Naftikó"			
+		naval_base = 9833 # Constantinople
+		task_force = {				
+			name = "Vasilikós Stólos"				
+			location = 9833 # Constantinople
+			ship = { name = "BRS Smyrnai" definition = battle_cruiser equipment = { ship_hull_heavy_1 = { amount = 1 owner = GRE version_name =  "Smyrnai Class" } } }
+			ship = { name = "BRS Georgios Averof" pride_of_the_fleet = yes definition = heavy_cruiser equipment = { ship_hull_cruiser_coastal_defense_ship = { amount = 1 owner = GRE version_name =  "Averof Class" } } }				
+			ship = { name = "BRS Elli" definition = light_cruiser equipment = { ship_hull_cruiser_1 = { amount = 1 owner = GRE version_name =  "Elli Class" } } }				
+			# Destroyer Flotilla
+			ship = { name = "BRS Vasilefs Georgios I" definition = destroyer equipment = { ship_hull_light_2 = { amount = 1 owner = GRE version_name =  "Vasilefs Georgios I Class" } } }		
+			ship = { name = "BRS Vasilissa Olga" definition = destroyer equipment = { ship_hull_light_2 = { amount = 1 owner = GRE version_name =  "Vasilefs Georgios I Class" } } }		
+			ship = { name = "BRS Aetos" definition = destroyer equipment = { ship_hull_light_1 = { amount = 1 owner = GRE version_name =  "Aetos Class" } } }		
+			ship = { name = "BRS Leon" definition = destroyer equipment = { ship_hull_light_1 = { amount = 1 owner = GRE version_name =  "Aetos Class" } } }		
+			ship = { name = "BRS Panthir" definition = destroyer equipment = { ship_hull_light_1 = { amount = 1 owner = GRE version_name =  "Aetos Class" } } }		
+			ship = { name = "BRS Hydra" definition = destroyer equipment = { ship_hull_light_1 = { amount = 1 owner = GRE version_name =  "Hydra Class" } } }
+			ship = { name = "BRS Psara" definition = destroyer equipment = { ship_hull_light_1 = { amount = 1 owner = GRE version_name =  "Hydra Class" } } }
+			ship = { name = "BRS Spetsai" definition = destroyer equipment = { ship_hull_light_1 = { amount = 1 owner = GRE version_name =  "Hydra Class" } } }
+		}					
+		task_force = {					
+			name = "Stolískou Ypovrychíon"				
+			location = 4109 # Athens
+			ship = { name = "BRS Katsonis" definition = submarine equipment = { ship_hull_submarine_1 = { amount = 1 owner = GRE version_name =  "Katsonis Class" } } }		
+			ship = { name = "BRS Papanikolis" definition = submarine equipment = { ship_hull_submarine_1 = { amount = 1 owner = GRE version_name =  "Katsonis Class" } } }		
+			ship = { name = "BRS Nirefs" definition = submarine equipment = { ship_hull_submarine_1 = { amount = 1 owner = GRE version_name =  "Glafkos Class" } } }		 
+			ship = { name = "BRS Triton" definition = submarine equipment = { ship_hull_submarine_1 = { amount = 1 owner = GRE version_name =  "Glafkos Class" } } }		
+			ship = { name = "BRS Glafkos" definition = submarine equipment = { ship_hull_submarine_1 = { amount = 1 owner = GRE version_name =  "Glafkos Class" } } }		
+		}					
+	}
+} 
+
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = ship_hull_light_1
+			creator = "GRE" 
+			version_name = "Hydra Class"
+		}
+		name = "BRS Amalia"
+		requested_factories = 1
+		progress = 0.15
+		amount = 1
+	}
+}

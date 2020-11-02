@@ -1,0 +1,29 @@
+﻿##### Navy #####
+units = {	
+	navy = {					
+		name = "Transfer"				
+		base = 9833
+		location = 9833 # Constantinople
+		ship = {
+			name = "BRS Theodora" 
+			definition = carrier 
+			equipment = { 
+				ship_hull_carrier_conversion_bb = { 
+					amount = 1 
+					owner = GRE 
+					version_name = "Theodora Class"
+				}
+			} 
+			air_wings = {
+				cv_fighter_equipment_0 =  { 
+					owner = "GRE" 
+					amount = 18
+				}
+				cv_nav_bomber_equipment_1 =  { 
+					owner = "GRE" 
+					amount = 12
+				}
+			}
+		}
+	}
+}

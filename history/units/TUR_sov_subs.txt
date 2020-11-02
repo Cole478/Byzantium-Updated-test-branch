@@ -1,0 +1,11 @@
+﻿##### Navy #####
+units = {	
+	navy = {					
+		name = "Transfer"				
+		base = 11746 
+		location = 11746 # 
+		ship = { name = "TCG Cerbe" definition = submarine equipment = { submarine_1 = { amount = 1 owner = TUR } } }
+		ship = { name = "TCG Turgutreis" definition = submarine equipment = { submarine_1 = { amount = 1 owner = TUR } } }
+		ship = { name = "TCG Pirireis" definition = submarine equipment = { submarine_1 = { amount = 1 owner = TUR } } }
+	}
+}

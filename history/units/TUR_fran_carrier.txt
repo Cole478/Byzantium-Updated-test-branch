@@ -1,0 +1,28 @@
+﻿##### Navy #####
+units = {	
+	navy = {					
+		name = "Transfer"				
+		base = 11746
+		location = 11746 # 
+		ship = {
+			name = "TCG Tekirdag" 
+			definition = carrier 
+			equipment = { 
+				carrier_1 = { 
+					amount = 1 
+					owner = TUR 
+				}
+			} 
+			air_wings = {
+				cv_fighter_equipment_0 =  { 
+					owner = "TUR" 
+					amount = 18
+				}
+				cv_nav_bomber_equipment_1 =  { 
+					owner = "TUR" 
+					amount = 12
+				}
+			}
+		}
+	}
+}

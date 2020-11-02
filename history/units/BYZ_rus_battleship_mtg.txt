@@ -1,0 +1,9 @@
+﻿##### Navy #####
+units = {	
+	navy = {					
+		name = "Transfer"				
+		base = 9833
+		location = 9833 # Constantinople
+		ship = { name = "BRS Justinian" definition = battleship equipment = { ship_hull_heavy_1 = { amount = 1 owner = GRE version_name = "Justinian Class" } } }
+	}
+}

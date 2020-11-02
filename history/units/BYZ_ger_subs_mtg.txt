@@ -1,0 +1,11 @@
+﻿##### Navy #####
+units = {	
+	navy = {					
+		name = "Transfer"				
+		base = 4109 
+		location = 4109 # Athens
+		ship = { name = "BRS Xifias" definition = submarine equipment = { ship_hull_submarine_1 = { amount = 1 owner = GRE version_name = "Type II Class" } } }
+		ship = { name = "BRS Amfitriti" definition = submarine equipment = { ship_hull_submarine_1 = { amount = 1 owner = GRE version_name = "Type II Class" } } }
+		ship = { name = "BRS Poseidon" definition = submarine equipment = { ship_hull_submarine_1 = { amount = 1 owner = GRE version_name = "Type II Class" } } }
+	}
+}

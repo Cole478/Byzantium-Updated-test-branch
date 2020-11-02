@@ -1,0 +1,9 @@
+﻿##### Navy #####
+units = {	
+	navy = {					
+		name = "Transfer"				
+		base = 11746
+		location = 11746 # 
+		ship = { name = "TCG Midilli" definition = battleship equipment = { ship_hull_heavy_1 = { amount = 1 owner = GRE version_name = "Midilli Class" } } }
+	}
+}
