@@ -13,8 +13,6 @@ news_event = {
 	major = yes
 	
 	is_triggered_only = yes
-
-	fire_only_once = yes
 	
 	immediate = {
 		set_global_flag = byz_mod_intro
